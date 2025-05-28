@@ -1,10 +1,10 @@
 spring:
   application:
-    name: telaLogin
+    name: estabelecimento
   datasource:
-    url: jdbc:postgresql://localhost:5436/telaLogin
-    username: telaLogin
-    password: telaLogin
+    url: jdbc:postgresql://localhost:5437/estabelecimento
+    username: estabelecimento
+    password: estabelecimento
     driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true
