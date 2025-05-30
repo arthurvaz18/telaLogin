@@ -1,16 +1,17 @@
-<section class="property-binding">
+<section class="Class e Style Binding">
   <article>
-    <h3> Interpolação: {{ url }}</h3>
-    <p>{{ url }}</p>
-    <p>valor é igual a {{ 1 + 1 }}</p>
-    <p>valor não é igual a {{ 1 + 1 + getValor() }}</p>
-    <p>igual: {{ cursoAngular && getCursoAngular() }}</p>
+    <div>Selecione uma classe</div>
+    <select #classe (change)="0">
+      <option value="alert-success">Sucesso</option>
+      <option value="alert-info">Info</option>
+      <option value="alert-warning">Alerta</option>
+      <option value="alert-danger">Erro</option>
+    </select>
+
+    <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'">Sucesso</div>
+    <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'">Info</div>
+    <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">Alerta</div>
+    <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">Ero</div>
   </article>
-  <article>
-    <h3>Imagens</h3>
-    <img [src]="urlImagem">
-    <img src="{{ urlImagem }}">
-    <p> Contador: {{ contador }}</p>
-    <button class="button" (click)="incrementaValor()">aumentar</button>
-  </article>
+
 </section>
