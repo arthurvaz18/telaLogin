@@ -8,18 +8,27 @@ import { HomeService} from "./home.service";
 })
 export class HomeComponent implements OnInit {
 
-  nomePortal = "http://loiane.training"
+  url: string = "http/loaine.com"
 
-  cursos: string[] = [];
+  contador = 0;
 
+  cursoAngular: boolean = true
+
+  urlImagem = 'https://picsum.photos/200/300';
+
+  getCursoAngular(){
+    return true;
+  }
+  getValor(){
+    return 1;
+  }
+  incrementaValor(){
+    this.contador ++;
+  }
   constructor(private mainService: HomeService,
               private injector: Injector) {
   }
 
   ngOnInit(): void {
-    this.ObtendoCursos()
-  }
-  ObtendoCursos(){
-    this.cursos = this.mainService.getCursos()
   }
 }

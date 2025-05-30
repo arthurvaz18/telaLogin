@@ -1,10 +1,16 @@
-<p>cursos novamente {{ nomePortal }}</p>
-<ul>
-  <li *ngFor="let cursos of cursos">
-    {{ cursos }}
-  </li>
-</ul>
-
-<p *ngFor="let cursos of cursos">
-  {{ cursos }}
-</p>
+<section class="property-binding">
+  <article>
+    <h3> Interpolação: {{ url }}</h3>
+    <p>{{ url }}</p>
+    <p>valor é igual a {{ 1 + 1 }}</p>
+    <p>valor não é igual a {{ 1 + 1 + getValor() }}</p>
+    <p>igual: {{ cursoAngular && getCursoAngular() }}</p>
+  </article>
+  <article>
+    <h3>Imagens</h3>
+    <img [src]="urlImagem">
+    <img src="{{ urlImagem }}">
+    <p> Contador: {{ contador }}</p>
+    <button class="button" (click)="incrementaValor()">aumentar</button>
+  </article>
+</section>
