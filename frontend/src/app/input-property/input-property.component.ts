@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {HomeComponent} from "../home/home.component";
 
 @Component({
   selector: 'app-curso',
@@ -7,17 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputPropertyComponent implements OnInit {
 
-  valor: number = 0;
+  @ViewChild("arCondicionado") ar : HomeComponent;
+
+  temperaturaAtual: number = 19;
+
+  subirAR(){
+    this.ar.aumentarTemperatura()
+  }
+
+  diminuirAR(){
+    this.ar.diminuirTemperatura()
+  }
+
+  onTemperaturaMudou(novaTemperatura: number){
+    this.temperaturaAtual = novaTemperatura;
+  }
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  adicao() {
-    this.valor ++;
-  }
-  diminuir(){
-    this.valor --;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, EventEmitter, Injector, OnInit, Output} from '@angular/core';
 import {HomeService} from "./home.service";
 
 @Component({
@@ -8,21 +8,22 @@ import {HomeService} from "./home.service";
 })
 export class HomeComponent implements OnInit {
 
-  valorAtual: string;
+  @Output() temperaturaMudou = new EventEmitter<number>();
 
-  botaoClicado() {
-    alert("Botão clicado!")
+  arCondicionado: number = 0;
+
+  aumentarTemperatura(){
+    this.arCondicionado ++;
   }
 
+  diminuirTemperatura(){
+    this.arCondicionado --;
+  }
 
   constructor(private mainService: HomeService,
               private injector: Injector) {
   }
 
   ngOnInit(): void {
-  }
-
-  textoDigitado($event: KeyboardEvent) {
-    this.valorAtual = ((<HTMLInputElement>$event.target).value);
   }
 }
