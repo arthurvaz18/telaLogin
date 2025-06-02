@@ -1,5 +1,5 @@
 import {Component, Injector, OnInit} from '@angular/core';
-import { HomeService} from "./home.service";
+import {HomeService} from "./home.service";
 
 @Component({
   selector: 'app-home',
@@ -8,11 +8,21 @@ import { HomeService} from "./home.service";
 })
 export class HomeComponent implements OnInit {
 
+  valorAtual: string;
+
+  botaoClicado() {
+    alert("Botão clicado!")
+  }
+
 
   constructor(private mainService: HomeService,
               private injector: Injector) {
   }
 
   ngOnInit(): void {
+  }
+
+  textoDigitado($event: KeyboardEvent) {
+    this.valorAtual = ((<HTMLInputElement>$event.target).value);
   }
 }

@@ -1,17 +1,9 @@
-<section class="Class e Style Binding">
-  <article>
-    <div>Selecione uma classe</div>
-    <select #classe (change)="0">
-      <option value="alert-success">Sucesso</option>
-      <option value="alert-info">Info</option>
-      <option value="alert-warning">Alerta</option>
-      <option value="alert-danger">Erro</option>
-    </select>
-
-    <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'">Sucesso</div>
-    <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'">Info</div>
-    <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">Alerta</div>
-    <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">Ero</div>
-  </article>
-
-</section>
+<article>
+  <h3>Event Binding </h3>
+  <div>
+    <button (click)="botaoClicado()" class="btn btn-primary">Me clique</button>
+    <br>
+    <input type="text" (keyup)="textoDigitado($event)">
+    <p>valor atual: {{ valorAtual }}</p>
+  </div>
+</article>
