@@ -5,20 +5,24 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from "@angular/forms";
-import {HomeModule} from "./home/home.module";
-import {InputPropertyComponent} from './input-property/input-property.component';
+import { LoginComponent } from './components/login/login.component';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputPropertyComponent,
+    LoginComponent,
+    CadastroComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HomeModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
