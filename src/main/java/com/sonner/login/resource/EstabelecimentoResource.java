@@ -8,6 +8,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/estabelecimentos")
@@ -55,6 +56,11 @@ public class EstabelecimentoResource {
             @RequestParam(value = "telefone", required = false) String telefone){
         List<Estabelecimento> estabelecimentos = estabelecimentoService.listarEstabelecimento(cnpj, nome, email, telefone);
         return ResponseEntity.ok(estabelecimentos);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?>login(@RequestBody Map<String, String> login) {
+        return estabelecimentoService.logarEstabelecimento(login);
     }
 
 }

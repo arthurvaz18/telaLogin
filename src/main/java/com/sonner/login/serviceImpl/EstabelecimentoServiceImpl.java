@@ -5,10 +5,14 @@ import com.sonner.login.repository.EstabelecimentoRepository;
 import com.sonner.login.service.EstabelecimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.security.sasl.AuthenticationException;
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -77,4 +81,19 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
         }
         return estabelecimentoRepository.findAll();
     }
+
+    @Override
+    public ResponseEntity<?> logarEstabelecimento(Map<String, String> login) {
+        String email = login.get("email");
+        String senha = login.get("senha");
+
+        Estabelecimento estabelecimento = estabelecimentoRepository.findByEmailAndSenha(email, senha).orElse(null);
+
+        if (estabelecimento != null) {
+            return ResponseEntity.ok(estabelecimento);
+        } else {
+            return ResponseEntity.status(401).body("Email ou senha inválidos");
+        }
+    }
+
 }
