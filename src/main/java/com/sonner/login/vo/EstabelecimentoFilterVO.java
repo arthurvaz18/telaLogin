@@ -1,69 +1,23 @@
-package com.sonner.login.model;
+package com.sonner.login.vo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "estabelecimento")
-@EntityListeners(AuditingEntityListener.class)
-public class Estabelecimento {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EstabelecimentoFilterVO {
+
     private Integer id;
-
-    @CNPJ
-    @Column(nullable = false, unique = true)
     private String cnpj;
-
-    @Column(nullable = false)
     private String nome;
-
-    @Email
-    @Column(nullable = false)
     private String email;
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Column(nullable = false)
-    @Size(min = 6)
-    private String senha;
-
-    @Column(nullable = false)
     private String pais;
-
-    @Column(nullable = false)
     private String estado;
-
-    @Column(nullable = false)
     private String cep;
-
-    @Column(nullable = false)
     private String cidade;
-
-    @Column(nullable = false)
+    private String bairro;
     private String endereco;
-
-    @Column(nullable = false)
     private String complemento;
-
-    @Column(nullable = false)
     private String telefone;
-
-    @CreatedDate
     private LocalDate dataCriacao;
-
-    @LastModifiedDate
     private LocalDate dataAtualizacao;
-
-    public Estabelecimento() {
-    }
 
     public Integer getId() {
         return id;
@@ -97,14 +51,6 @@ public class Estabelecimento {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getPais() {
         return pais;
     }
@@ -135,6 +81,14 @@ public class Estabelecimento {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
     public String getEndereco() {

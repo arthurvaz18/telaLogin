@@ -41,7 +41,6 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
         Estabelecimento estabelecimentoExistente = estabelecimentoOptional.get();
         estabelecimentoExistente.setEmail(estabelecimento.getEmail());
         estabelecimentoExistente.setNome(estabelecimento.getNome());
-        estabelecimentoExistente.setNome(estabelecimento.getNome());
         estabelecimentoExistente.setTelefone(estabelecimento.getTelefone());
         estabelecimentoExistente.setDataAtualizacao(estabelecimento.getDataAtualizacao());
         estabelecimentoExistente.setDataCriacao(estabelecimento.getDataCriacao());
