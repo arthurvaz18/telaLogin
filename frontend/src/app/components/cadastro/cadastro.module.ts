@@ -5,6 +5,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {CadastroComponent} from "./cadastro.component";
+import {NgxMaskModule} from "ngx-mask";
+import {CadastroRoutingModule} from "./cadastro-routing.module";
 
 
 
@@ -18,7 +20,8 @@ import {CadastroComponent} from "./cadastro.component";
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    CommonModule
+    NgxMaskModule.forRoot(),
+    CadastroRoutingModule
   ],
   exports: [
     CadastroComponent

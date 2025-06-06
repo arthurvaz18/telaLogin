@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/estabelecimentos")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EstabelecimentoResource {
 
     EstabelecimentoService estabelecimentoService;
