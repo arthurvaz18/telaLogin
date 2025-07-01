@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="fundo-total">
+  <div class="fundo-login">
+    <dx-form
+      [formData]="estabelecimento"
+      [colCount]="2"
+      [labelLocation]="'top'"
+      [width]="400">
+
+      <!--dxi items-->
+      <dxi-item dataField="email" [label]="{text: 'Email:'}" template="emailTemplate"></dxi-item>
+      <dxi-item dataField="senha" [label]="{text: 'Senha:'}" template="senhaTemplate"></dxi-item>
+
+      <!--*dx templates-->
+      <div *dxTemplate="let data of 'emailTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.email"
+          placeholder="@email.com">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'senhaTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.senha"
+          mode="password">
+        </dx-text-box>
+      </div>
+
+    </dx-form>
+
+    <div class="botoes">
+      <dx-button text="Login" type="success" (onClick)="login()"></dx-button>
+      <dx-button text="Não possui cadastro?" type="default" stylingMode="outlined" (onClick)="CriarCadastro()"></dx-button>
+    </div>
+  </div>
+</div>
