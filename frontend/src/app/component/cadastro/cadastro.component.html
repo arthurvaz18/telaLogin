@@ -1,1 +1,143 @@
-<p>cadastro works!</p>
+<div class="fundo-total">
+  <div class="fundo-cadastro">
+    <dx-form
+      [formData]="estabelecimento"
+      [colCount]="2"
+      [labelLocation]="'top'"
+      [width]="600">
+
+      <!--dx-items-->
+      <dxi-item dataField="cnpj" [label]="{text: 'CNPJ'}" template="cnpjTemplate"
+                [validationRules]="[{type: 'required', message: 'CNPJ é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="nome" [label]="{text: 'Nome'}" template="nomeTemplate"
+                [validationRules]="[{type: 'required', message: 'Nome é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="email" [label]="{text: 'Email'}" template="emailTemplate"
+                [validationRules]="[{type: 'required', message: 'EMAIL é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="senha" [label]="{text: 'Senha'}" template="senhaTemplate"
+                [validationRules]="[{type: 'required', message: 'SENHA é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="pais" [label]="{text: 'Pais'}" template="paisTemplate"
+                [validationRules]="[{type: 'required', message: 'Pais é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="estado" [label]="{text: 'Estado'}" template="estadoTemplate"
+                [validationRules]="[{type: 'required', message: 'Estado é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="cep" [label]="{text: 'CEP'}" template="cepTemplate"
+                [validationRules]="[{type: 'required', message: 'CEP é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="cidade" [label]="{text: 'Cidade'}" template="cidadeTemplate"
+                [validationRules]="[{type: 'required', message: 'CIDADE é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="endereco" [label]="{text: 'Endereco'}" template="enderecoTemplate"
+                [validationRules]="[{type: 'required', message: 'ENDEREÇO é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="complemento" [label]="{text: 'Complemento'}" template="complementoTemplate"
+                [validationRules]="[{type: 'required', message: 'COMPLEMENTO é obrigatório'}]">
+      </dxi-item>
+
+      <dxi-item dataField="telefone" [label]="{text: 'Telefone'}" template="telefoneTemplate"
+                [validationRules]="[{type: 'required', message: 'TELEFONE é obrigatório'}]">
+      </dxi-item>
+
+      <!--dx templatess-->
+      <div *dxTemplate="let data of 'cnpjTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.cnpj"
+          mask="00.000.000/0000-00">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'nomeTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.nome">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'emailTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.email"
+          placeholder="@email.com">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'senhaTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.senha"
+          mode="password">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'paisTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.pais">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'estadoTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.estado">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'cepTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.cep">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'cidadeTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.cidade">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'enderecoTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.endereco">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'complementoTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.complemento">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'telefoneTemplate'">
+        <dx-text-box
+          class="caixa-texto"
+          [(value)]="estabelecimento.telefone"
+          placeholder="(00) 0 0000-0000"
+          mask="(00) 0 0000-0000">
+        </dx-text-box>
+      </div>
+    </dx-form>
+    <div class="botoes">
+      <dx-button text="Cadastrar" type="success" (onClick)="cadastrarEstabelecimento()"></dx-button>
+      <dx-button text="Já possuo cadastro" type="default" stylingMode="outlined"
+                 (onClick)="jaPossuiCadastro()"></dx-button>
+    </div>
+  </div>
+</div>
