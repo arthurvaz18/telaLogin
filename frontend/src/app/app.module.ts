@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {DxFormModule, DxSelectBoxModule, DxTextBoxModule} from "devextreme-angular";
 import {ComponentModule} from "./component/component.module";
 import {HttpClientModule} from "@angular/common/http";
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 @NgModule({
   declarations: [

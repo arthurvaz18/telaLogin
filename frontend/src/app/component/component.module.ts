@@ -5,14 +5,25 @@ import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
 import {FormsModule} from "@angular/forms";
 import {ComponentRoutingModule} from "./component.routing.module";
-import {DxButtonModule, DxFormModule, DxSelectBoxModule, DxTextBoxModule} from "devextreme-angular";
+import {
+  DxButtonModule,
+  DxFormModule,
+  DxMenuModule,
+  DxSelectBoxModule,
+  DxTextBoxModule,
+  DxToolbarModule
+} from "devextreme-angular";
+import {InicioComponent} from "./inicio/inicio.component";
+import {NavbarComponent} from "./navbar/navbar.component";
 
 
 @NgModule({
   declarations: [
     CadastroComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    InicioComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +33,8 @@ import {DxButtonModule, DxFormModule, DxSelectBoxModule, DxTextBoxModule} from "
     DxSelectBoxModule,
     DxFormModule,
     DxButtonModule,
+    DxToolbarModule,
+    DxMenuModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

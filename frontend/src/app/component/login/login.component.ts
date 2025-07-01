@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       this.mainService.logarEstabelecimento(this.estabelecimento).subscribe({
         next: (logar) =>{
         alert('Login realizado com Sucesso');
-        this.router.navigate(['/inicio']);
+        this.router.navigate(['/home']);
         },
         error:(erro) =>{
           console.error('Erro ao Logar', erro);
