@@ -1,0 +1,16 @@
+.navbar-container {
+  background: #0078d7;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+}
+
+.menu-navegacao .dx-menu-item {
+  padding: 12px 20px;
+}
+
+.menu-navegacao .dx-menu-item.dx-state-selected .dx-menu-item-content {
+  background: #005a9e;
+}

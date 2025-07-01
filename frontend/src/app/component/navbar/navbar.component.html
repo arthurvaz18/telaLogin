@@ -1,0 +1,10 @@
+<div class="navbar-container">
+  <dx-menu
+    [items]="menuItems"
+    displayExpr="text"
+    (onItemClick)="navegandoPara($event.itemData.path)"
+    selectionMode="single"
+    orientation="horizontal"
+    cssClass="menu-navegacao">
+  </dx-menu>
+</div>
