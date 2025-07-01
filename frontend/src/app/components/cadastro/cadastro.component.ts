@@ -23,17 +23,21 @@ export class CadastroComponent {
 
     this.mainService.cadastrarEstabelecimento(this.estabelecimento).subscribe({
       next:(res) => {
-        alert('Cadastro realizado com sucesso!');
+          alert('Cadastro realizado com sucesso!');
         this.estabelecimento = new Estabelecimento(); // limpa formulário
         this.cadastroAndamento = false;
         this.router.navigate(['/login']);
       },
-      error: (err) => {
-        console.error('Erro ao cadastrar:', err);
+      error: (erro) => {
+        console.error('Erro ao cadastrar:', erro);
         alert('Erro ao cadastrar estabelecimento. Tente novamente.');
         this.cadastroAndamento = false;
       }
-    })
+    });
+  }
+
+  entrar(){
+      this.router.navigate(['/login']);
   }
 
 }
