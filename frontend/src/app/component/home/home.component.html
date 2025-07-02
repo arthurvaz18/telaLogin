@@ -16,13 +16,20 @@
   template="menu"
   (onOptionChanged)="aoAlterarOpcaoDoMenu($event)">
 
+  <!-- MENU LATERAL -->
   <div *dxTemplate="let data of 'menu'">
     <div class="menu-panel-content">
       <dx-list
         [items]="itensMenu"
-        displayExpr="texto"
+        [selectedItemKeys]="[rotaAtual]"
         selectionMode="single"
         (onItemClick)="aoClicarItem($event.itemData)">
+
+        <div *dxTemplate="let item of 'item'" class="menu-item">
+          <i class="dx-icon dx-icon-{{ item.icon }}"></i>
+          <span class="menu-texto">{{ item.texto }}</span>
+        </div>
+
       </dx-list>
     </div>
   </div>
@@ -30,5 +37,4 @@
   <div class="view-panel-content">
     <router-outlet></router-outlet>
   </div>
-
 </dx-drawer>

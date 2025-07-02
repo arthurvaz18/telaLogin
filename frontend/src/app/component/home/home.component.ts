@@ -7,8 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  titulo = 'notaFiscalFront';
+
   menuAberto = false;
+
+  rotaAtual: string;
 
   itensMenu = [
     { texto: 'Perfil', caminho: '/home/perfil', icon: 'user' },
@@ -21,22 +23,32 @@ export class HomeComponent {
     { texto: 'Configurações', caminho: '/home/configuracoes', icon: 'preferences' }
   ];
 
-
   opcoesBotaoMenu = {
     icon: 'menu',
-    onClick: () => {
-      this.menuAberto = !this.menuAberto;
-    }
+    stylingMode: 'text',
+    type: 'normal',
+    hint: 'Abrir menu',
+    elementAttr: {
+      class: 'botao-menu-modern'
+    },
+    onClick: () => this.alternarMenu()
   };
 
-  constructor(public router: Router) {}
+  constructor(private router: Router) {
+    this.rotaAtual = router.url;
+  }
 
-  aoClicarItem(item: any) {
+  alternarMenu(): void {
+    this.menuAberto = !this.menuAberto;
+  }
+
+  aoClicarItem(item: any): void {
     this.router.navigate([item.caminho]);
+    this.rotaAtual = item.caminho;
     this.menuAberto = false;
   }
 
-  aoAlterarOpcaoDoMenu(evento: any) {
+  aoAlterarOpcaoDoMenu(evento: any): void {
     if (evento.name === 'opened') {
       this.menuAberto = evento.value;
     }
