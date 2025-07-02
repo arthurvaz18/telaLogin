@@ -19,18 +19,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if(this.estabelecimento.email && this.estabelecimento.senha){
+    if (this.estabelecimento.email && this.estabelecimento.senha) {
       this.mainService.logarEstabelecimento(this.estabelecimento).subscribe({
-        next: (logar) =>{
-        alert('Login realizado com Sucesso');
-        this.router.navigate(['/home']);
+        next: (logado) => {
+          localStorage.setItem('emailEstabelecimento', logado.email); // <- Usa o retorno do backend
+          alert('Login realizado com Sucesso');
+          this.router.navigate(['/home']);
         },
-        error:(erro) =>{
+        error: (erro) => {
           console.error('Erro ao Logar', erro);
           alert('Email ou senha inválidos. Tente novamente.');
-      }
+        }
       });
-    }else {
+    } else {
       alert('Preencha email e senha');
     }
   }

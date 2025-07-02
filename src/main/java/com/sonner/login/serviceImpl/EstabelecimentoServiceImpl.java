@@ -37,19 +37,21 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
     }
 
     @Override
-    public Estabelecimento atualizarEstabelecimento(Integer id, Estabelecimento estabelecimento) {
-        Optional<Estabelecimento> estabelecimentoOptional = estabelecimentoRepository.findById(id);
-        if (!estabelecimentoOptional.isPresent()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado");
-        }
-        Estabelecimento estabelecimentoExistente = estabelecimentoOptional.get();
-        estabelecimentoExistente.setEmail(estabelecimento.getEmail());
-        estabelecimentoExistente.setNome(estabelecimento.getNome());
-        estabelecimentoExistente.setTelefone(estabelecimento.getTelefone());
-        estabelecimentoExistente.setDataAtualizacao(estabelecimento.getDataAtualizacao());
-        estabelecimentoExistente.setDataCriacao(estabelecimento.getDataCriacao());
-        estabelecimentoExistente.setCidade(estabelecimento.getCidade());
-        estabelecimentoExistente.setEstado(estabelecimento.getEstado());
+    public Estabelecimento atualizarEstabelecimento(String email, String senha, Estabelecimento estabelecimentoAtualizado) {
+        Estabelecimento estabelecimentoExistente = estabelecimentoRepository.findByEmailAndSenha(email, senha)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+
+        estabelecimentoExistente.setEmail(estabelecimentoAtualizado.getEmail());
+        estabelecimentoExistente.setNome(estabelecimentoAtualizado.getNome());
+        estabelecimentoExistente.setSenha(estabelecimentoAtualizado.getSenha());
+        estabelecimentoExistente.setPais(estabelecimentoAtualizado.getPais());
+        estabelecimentoExistente.setEstado(estabelecimentoAtualizado.getEstado());
+        estabelecimentoExistente.setCep(estabelecimentoAtualizado.getCep());
+        estabelecimentoExistente.setCidade(estabelecimentoAtualizado.getCidade());
+        estabelecimentoExistente.setEndereco(estabelecimentoAtualizado.getEndereco());
+        estabelecimentoExistente.setComplemento(estabelecimentoAtualizado.getComplemento());
+        estabelecimentoExistente.setTelefone(estabelecimentoAtualizado.getTelefone());
+
         return estabelecimentoRepository.save(estabelecimentoExistente);
     }
 
@@ -70,10 +72,8 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
     public List<Estabelecimento> listarEstabelecimento(String cnpj, String nome, String email, String telefone) {
         if(cnpj != null && nome !=null && email !=null && telefone !=null){
            return estabelecimentoRepository.findByCnpjAndNomeAndEmailAndTelefone(cnpj, nome, email, telefone);
-        }else if(nome != null){
+        } else if(nome != null){
            return estabelecimentoRepository.findByNome(nome);
-        } else if (email != null) {
-           return estabelecimentoRepository.findByEmail(email);
         } else if (cnpj != null) {
             return estabelecimentoRepository.findByCnpj(cnpj);
         } else if (telefone != null) {
@@ -94,6 +94,11 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
         } else {
             return ResponseEntity.status(401).body("Email ou senha inválidos");
         }
+    }
+
+    @Override
+    public Optional<Estabelecimento> buscarEstabelecimentoPorEmail(String email) {
+        return estabelecimentoRepository.findByEmail(email);
     }
 
 }

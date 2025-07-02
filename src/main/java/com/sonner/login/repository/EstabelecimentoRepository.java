@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface EstabelecimentoRepository extends JpaRepository<Estabelecimento, Integer> {
     List<Estabelecimento> findByCnpj(String cnpj);
     List<Estabelecimento> findByNome(String nome);
-    List<Estabelecimento> findByEmail(String email);
+    Optional<Estabelecimento> findByEmail(String email);
     List<Estabelecimento> findByTelefone(String telefone);
     List<Estabelecimento> findByCnpjAndNomeAndEmailAndTelefone(String cnpj, String nome, String email, String telefone);
     Optional<Estabelecimento> findByEmailAndSenha(String email, String senha);

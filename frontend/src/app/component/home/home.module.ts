@@ -3,7 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 
-import {DxDrawerModule, DxListModule, DxButtonModule, DxToolbarModule} from 'devextreme-angular';
+import {
+  DxDrawerModule,
+  DxListModule,
+  DxButtonModule,
+  DxToolbarModule,
+  DxFormModule,
+  DxTextBoxModule
+} from 'devextreme-angular';
 
 import { HomeComponent } from './home.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -35,7 +42,9 @@ import {HomeRoutingModule} from "./home.routing.module";
     DxDrawerModule,
     DxListModule,
     DxButtonModule,
-    DxToolbarModule
+    DxToolbarModule,
+    DxFormModule,
+    DxTextBoxModule
   ]
 })
 export class HomeModule {}

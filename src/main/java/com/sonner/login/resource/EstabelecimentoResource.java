@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/estabelecimentos")
@@ -37,9 +38,10 @@ public class EstabelecimentoResource {
         return ResponseEntity.ok(estabelecimentoService.buscarEstabelecimento(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Estabelecimento> atualizarUsuario(@PathVariable Integer id, @RequestBody Estabelecimento estabelecimento) {
-        return ResponseEntity.ok(estabelecimentoService.atualizarEstabelecimento(id, estabelecimento));
+    @PutMapping("/editar")
+    public ResponseEntity<Estabelecimento> editarEstabelecimento(@RequestParam String email,@RequestParam String senha, @RequestBody Estabelecimento estabelecimento) {
+        Estabelecimento atualizado = estabelecimentoService.atualizarEstabelecimento(email, senha, estabelecimento);
+        return ResponseEntity.ok(atualizado);
     }
 
     @DeleteMapping("/{id}")
@@ -63,4 +65,9 @@ public class EstabelecimentoResource {
         return estabelecimentoService.logarEstabelecimento(login);
     }
 
+    @GetMapping("/buscaPorEmail")
+    public ResponseEntity<Estabelecimento> buscarEstabelecimentoPorEmail(@RequestParam String email) {
+        Optional<Estabelecimento> estabelecimento = estabelecimentoService.buscarEstabelecimentoPorEmail(email);
+        return estabelecimento.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
 }
