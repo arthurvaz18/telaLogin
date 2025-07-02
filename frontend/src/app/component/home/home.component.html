@@ -1,1 +1,34 @@
-<p>home works!</p>
+<dx-toolbar class="fundo">
+  <dxi-item
+    location="before"
+    widget="dxButton"
+    [options]="opcoesBotaoMenu">
+  </dxi-item>
+  <dxi-item location="center" text="Local Sense"></dxi-item>
+</dx-toolbar>
+
+<dx-drawer
+  id="meu-drawer"
+  [opened]="menuAberto"
+  position="left"
+  revealMode="expand"
+  [closeOnOutsideClick]="true"
+  template="menu"
+  (onOptionChanged)="aoAlterarOpcaoDoMenu($event)">
+
+  <div *dxTemplate="let data of 'menu'">
+    <div class="menu-panel-content">
+      <dx-list
+        [items]="itensMenu"
+        displayExpr="texto"
+        selectionMode="single"
+        (onItemClick)="aoClicarItem($event.itemData)">
+      </dx-list>
+    </div>
+  </div>
+
+  <div class="view-panel-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</dx-drawer>

@@ -6,11 +6,11 @@ import {HomeComponent} from "./home/home.component";
 import {FormsModule} from "@angular/forms";
 import {ComponentRoutingModule} from "./component.routing.module";
 import {
-  DxButtonModule,
-  DxFormModule,
+  DxButtonModule, DxDrawerModule,
+  DxFormModule, DxListModule,
   DxMenuModule,
   DxSelectBoxModule,
-  DxTextBoxModule,
+  DxTextBoxModule, DxTileViewModule,
   DxToolbarModule
 } from "devextreme-angular";
 import {InicioComponent} from "./inicio/inicio.component";
@@ -21,7 +21,6 @@ import {NavbarComponent} from "./navbar/navbar.component";
   declarations: [
     CadastroComponent,
     LoginComponent,
-    HomeComponent,
     InicioComponent,
     NavbarComponent
   ],
@@ -35,6 +34,9 @@ import {NavbarComponent} from "./navbar/navbar.component";
     DxButtonModule,
     DxToolbarModule,
     DxMenuModule,
+    DxTileViewModule,
+    DxDrawerModule,
+    DxListModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

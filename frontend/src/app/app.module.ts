@@ -3,10 +3,10 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {DxFormModule, DxSelectBoxModule, DxTextBoxModule} from "devextreme-angular";
+import {DxDrawerModule, DxFormModule, DxListModule, DxSelectBoxModule, DxTextBoxModule} from "devextreme-angular";
 import {ComponentModule} from "./component/component.module";
 import {HttpClientModule} from "@angular/common/http";
-import { NavbarComponent } from './component/navbar/navbar.component';
+import {HomeModule} from "./component/home/home.module";
 
 @NgModule({
   declarations: [
@@ -16,10 +16,13 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ComponentModule,
+    HomeModule,
     DxTextBoxModule,
     DxSelectBoxModule,
     DxFormModule,
-    ComponentModule
+    DxDrawerModule,
+    DxListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

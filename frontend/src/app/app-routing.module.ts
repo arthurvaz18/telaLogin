@@ -11,6 +11,12 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, data: [{title: 'Home'}]},
   {path: 'inicio', component: InicioComponent, data: [{title: 'Inicio'}]},
 
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./component/home/home.module').then(m => m.HomeModule)
+  },
+
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
   {path: '**', redirectTo: 'inicio'}
 ];
