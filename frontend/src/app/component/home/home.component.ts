@@ -9,13 +9,20 @@ import { Router } from '@angular/router';
 export class HomeComponent {
 
   menuAberto = false;
-
   rotaAtual: string;
 
   itensMenu = [
-    { texto: 'Perfil', caminho: '/home/perfil', icon: 'user' },
-    { texto: 'Horário', caminho: '/home/horario', icon: 'calendar' },
-    { texto: 'Cardápio', caminho: '/home/cardapio', icon: 'list' },
+    {
+      texto: 'Perfil',
+      icon: 'user',
+      expanded: false,
+      subItens: [
+        { texto: 'Visualizar', caminho: '/home/perfil/visualizar' },
+        { texto: 'Editar', caminho: '/home/perfil/editar' }
+      ]
+    },
+    { texto: 'Estabelecimento', caminho: '/home/estabelecimento', icon: 'home' },
+    { texto: 'Cardápio', caminho: '/home/cardapio', icon: 'doc' },
     { texto: 'Bebidas', caminho: '/home/bebidas', icon: 'coffee' },
     { texto: 'Pedidos', caminho: '/home/pedidos', icon: 'cart' },
     { texto: 'Histórico', caminho: '/home/historico', icon: 'revert' },
@@ -42,7 +49,12 @@ export class HomeComponent {
     this.menuAberto = !this.menuAberto;
   }
 
-  aoClicarItem(item: any): void {
+  toggleExpand(item: any) {
+    item.expanded = !item.expanded;
+  }
+
+  aoClicarItem(item: any, event?: MouseEvent): void {
+    if (event) event.stopPropagation();
     this.router.navigate([item.caminho]);
     this.rotaAtual = item.caminho;
     this.menuAberto = false;

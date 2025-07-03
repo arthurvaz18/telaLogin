@@ -19,18 +19,23 @@
   <!-- MENU LATERAL -->
   <div *dxTemplate="let data of 'menu'">
     <div class="menu-panel-content">
-      <dx-list
-        [items]="itensMenu"
-        [selectedItemKeys]="[rotaAtual]"
-        selectionMode="single"
-        (onItemClick)="aoClicarItem($event.itemData)">
 
-        <div *dxTemplate="let item of 'item'" class="menu-item">
+      <div *ngFor="let item of itensMenu">
+        <div class="menu-item" (click)="item.subItens ? toggleExpand(item) : aoClicarItem(item)">
           <i class="dx-icon dx-icon-{{ item.icon }}"></i>
           <span class="menu-texto">{{ item.texto }}</span>
+          <span *ngIf="item.subItens" class="seta">
+            {{ item.expanded ? '▼' : '►' }}
+          </span>
         </div>
 
-      </dx-list>
+        <div *ngIf="item.subItens && item.expanded" class="submenu">
+          <div *ngFor="let sub of item.subItens" class="menu-subitem" (click)="aoClicarItem(sub, $event)">
+            {{ sub.texto }}
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

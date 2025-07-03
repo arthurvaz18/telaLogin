@@ -11,7 +11,7 @@
 }
 
 .menu-panel-content {
-  background-color: #ffffff;
+  background-color: white;
   width: 250px;
   height: 100%;
   padding-top: 10px;
@@ -19,26 +19,51 @@
 
 .menu-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
   padding: 10px 15px;
   font-size: 16px;
   color: #374151;
-  transition: background 0.2s;
   cursor: pointer;
-
-  &:hover {
-    background-color: #f3f4f6;
-  }
+  gap: 10px;
 }
 
-.dx-list-item {
-  &.dx-state-focused,
-  &.dx-list-item-selected {
-    background-color: #e0e7ff !important;
-    font-weight: 600;
-    color: #1e3a8a;
-  }
+.menu-item:hover {
+  background-color: #f3f4f6;
+}
+
+.menu-texto {
+  flex-grow: 1;
+}
+
+.seta {
+  user-select: none;
+  font-weight: bold;
+}
+
+.submenu {
+  padding-left: 20px;
+  background-color: #f9fafb;
+}
+
+.menu-subitem {
+  padding: 8px 15px;
+  font-size: 15px;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+.menu-subitem:hover {
+  background-color: #e0e7ff;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+.dx-list-item.dx-state-focused,
+.dx-list-item.dx-list-item-selected {
+  background-color: #e0e7ff !important;
+  font-weight: 600;
+  color: #1e3a8a;
 }
 
 .view-panel-content {
