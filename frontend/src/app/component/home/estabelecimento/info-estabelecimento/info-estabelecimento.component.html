@@ -1,1 +1,87 @@
-<p>info-estabelecimento works!</p>
+<div class="perfil-estabelecimento-container">
+  <dx-form
+    [formData]="estabelecimento"
+    [colCount]="1"
+    [labelLocation]="'top'"
+    class="perfil-estabelecimento-form"
+  >
+    <dxi-item dataField="nome" [label]="{ text: 'Nome do Estabelecimento' }" template="nomeTemplate"></dxi-item>
+
+    <dxi-item itemType="group" [colCount]="2">
+      <dxi-item dataField="cnpj" [label]="{ text: 'CNPJ' }" template="cnpjTemplate"></dxi-item>
+      <dxi-item dataField="tipoEstabelecimentoEnum" [label]="{ text: 'Tipo do Estabelecimento' }" template="tipoEstabelecimentoEnumTemplate"></dxi-item>
+    </dxi-item>
+
+
+    <dxi-item dataField="statusEstabelecimento" [label]="{ text: 'Status' }" template="statusTemplate"></dxi-item>
+
+    <dxi-item dataField="descricaoEstabelecimento" [label]="{ text: 'Descrição' }"
+              template="descricaoTemplate"></dxi-item>
+
+    <dxi-item itemType="group" [colCount]="2">
+      <dxi-item dataField="dataCriacao" [label]="{ text: 'Data de Criação' }" template="dataCriacaoTemplate"></dxi-item>
+      <dxi-item dataField="dataAtualizacao" [label]="{ text: 'Última Atualização' }"
+                template="dataAtualizacaoTemplate"></dxi-item>
+    </dxi-item>
+
+    <div *dxTemplate="let data of 'nomeTemplate'">
+      <div class="campo-valor nome">{{ estabelecimento.nome }}</div>
+    </div>
+
+    <div *dxTemplate="let data of 'cnpjTemplate'">
+      <dx-text-box
+        [value]="estabelecimento.cnpj"
+        mask="00.000.000/0000-00"
+        [disabled]="true"
+        class="campo-box"
+      ></dx-text-box>
+    </div>
+
+    <div *dxTemplate="let data of 'statusTemplate'">
+    <span class="badge-status" [ngClass]="estabelecimento.statusEstabelecimento ? 'ativo' : 'inativo'">
+      {{ estabelecimento.statusEstabelecimento ? 'Ativo' : 'Inativo' }}
+    </span>
+    </div>
+
+    <div *dxTemplate="let data of 'descricaoTemplate'">
+      <dx-text-area
+        [value]="estabelecimento.descricaoEstabelecimento"
+        [readOnly]="true"
+        class="campo-box"
+      ></dx-text-area>
+    </div>
+
+    <div *dxTemplate="let data of 'tipoEstabelecimentoEnumTemplate'">
+      <dx-select-box
+        [items]="tipoEstabelecimentoEnum"
+        [(value)]="estabelecimento.tipoEstabelecimentoEnum"
+        placeholder="Tipo"
+        displayExpr="toString"
+        valueExpr="toString"
+        [disabled]="true"
+        class="campo-box"
+      ></dx-select-box>
+    </div>
+
+    <div *dxTemplate="let data of 'dataCriacaoTemplate'">
+      <dx-date-box
+        [value]="estabelecimento.dataCriacao"
+        [readOnly]="true"
+        type="date"
+        displayFormat="dd/MM/yyyy"
+        class="campo-box">
+      </dx-date-box>
+    </div>
+
+    <div *dxTemplate="let data of 'dataAtualizacaoTemplate'">
+      <dx-date-box
+        [value]="estabelecimento.dataAtualizacao"
+        [readOnly]="true"
+        type="date"
+        displayFormat="dd/MM/yyyy"
+        class="campo-box">
+      </dx-date-box>
+    </div>
+
+  </dx-form>
+</div>

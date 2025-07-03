@@ -9,7 +9,7 @@ import {
   DxTextBoxModule,
   DxSwitchModule,
   DxDateBoxModule,
-  DxSelectBoxModule
+  DxSelectBoxModule, DxCheckBoxModule, DxTextAreaModule
 } from 'devextreme-angular';
 import {EstabelecimentoRoutingModule} from "./estabelecimento.routing.module";
 import {InfoEstabelecimentoComponent} from "./info-estabelecimento/info-estabelecimento.component";
@@ -28,7 +28,9 @@ import {InfoEstabelecimentoComponent} from "./info-estabelecimento/info-estabele
     DxTextBoxModule,
     DxSwitchModule,
     DxDateBoxModule,
-    DxSelectBoxModule
+    DxSelectBoxModule,
+    DxCheckBoxModule,
+    DxTextAreaModule
   ]
 })
 export class EstabelecimentoModule {}

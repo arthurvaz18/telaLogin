@@ -1,0 +1,88 @@
+.perfil-estabelecimento-container {
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+  margin: 32px auto;
+  max-width: 640px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.perfil-estabelecimento-form {
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03);
+}
+
+.nome-estabelecimento,
+.campo-valor.nome {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #0c4a6e;
+  padding: 20px 0 24px 0;
+  border-bottom: 4px solid #2563eb;
+  letter-spacing: 1.2px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.badge-status {
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
+  letter-spacing: 0.4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.badge-status.ativo {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1.5px solid #10b981;
+}
+
+.badge-status.inativo {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1.5px solid #ef4444;
+}
+
+.campo-box {
+  background-color: #f9fafb;
+  color: #111827;
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 1 !important;
+  border: 1px solid #e5e7eb;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: inset 0 0 6px rgb(0 0 0 / 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.campo-box .dx-texteditor,
+.campo-box .dx-textarea,
+.campo-box .dx-selectbox,
+.campo-box .dx-datebox {
+  background-color: inherit !important;
+  color: inherit !important;
+  opacity: 1 !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  border: none !important;
+  box-shadow: none !important;
+  cursor: default !important;
+}
+
+.campo-box:hover {
+  box-shadow: inset 0 0 10px rgb(37 99 235 / 0.3);
+}
+
+.perfil-estabelecimento-form .dx-form-item {
+  margin-bottom: 24px;
+}
