@@ -51,6 +51,9 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
         estabelecimentoExistente.setEndereco(estabelecimentoAtualizado.getEndereco());
         estabelecimentoExistente.setComplemento(estabelecimentoAtualizado.getComplemento());
         estabelecimentoExistente.setTelefone(estabelecimentoAtualizado.getTelefone());
+        estabelecimentoExistente.setStatusEstabelecimento(estabelecimentoAtualizado.getStatusEstabelecimento());
+        estabelecimentoExistente.setTipoEstabelecimentoEnum(estabelecimentoAtualizado.getTipoEstabelecimentoEnum());
+        estabelecimentoExistente.setDescricaoEstabelecimento(estabelecimentoAtualizado.getDescricaoEstabelecimento());
 
         return estabelecimentoRepository.save(estabelecimentoExistente);
     }

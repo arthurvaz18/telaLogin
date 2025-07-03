@@ -9,7 +9,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -64,12 +63,9 @@ public class Estabelecimento {
     @LastModifiedDate
     private LocalDate dataAtualizacao;
 
-    @Column(nullable = false)
     private Boolean statusEstabelecimento;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private TipoEstabelecimentoEnum tipoEstabelecimentoEnum;
 
     @Column(length = 500)

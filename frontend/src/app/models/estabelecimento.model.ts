@@ -15,7 +15,7 @@ export class Estabelecimento{
   telefone: string;
   dataCriacao?: Date;
   dataAtualizacao?: Date;
-  statusEstabelecimento: boolean;
+  statusEstabelecimento?: boolean;
   tipoEstabelecimentoEnum: TipoEstabelecimentoEnum;
   logoEstabelecimentoUrl?: string;
   descricaoEstabelecimento?: string;
