@@ -21,7 +21,14 @@ export class HomeComponent {
         { texto: 'Editar', caminho: '/home/perfil/editar' }
       ]
     },
-    { texto: 'Estabelecimento', caminho: '/home/estabelecimento', icon: 'home' },
+    {
+      texto: 'Estabelecimento',
+      icon: 'home',
+      expanded: false,
+      subItens: [
+        {texto: 'Informações', caminho: '/home/estabelecimento/info-estabelecimento'},
+      ]
+    },
     { texto: 'Cardápio', caminho: '/home/cardapio', icon: 'doc' },
     { texto: 'Bebidas', caminho: '/home/bebidas', icon: 'coffee' },
     { texto: 'Pedidos', caminho: '/home/pedidos', icon: 'cart' },
