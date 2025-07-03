@@ -1,10 +1,10 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
+  display: block;
+  height: 100vh;
+  overflow-y: auto;
   background: linear-gradient(to right, #f8fafc, #f1f5f9);
-  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
 }
 
 .card-estabelecimento {
@@ -17,11 +17,11 @@
   width: 100%;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  }
+.card-estabelecimento:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
 .card-titulo {
@@ -43,9 +43,19 @@
 }
 
 .form-container {
-  width: 100%;
-  max-width: 700px;
-  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  height: calc(100vh - 60px); /* ajusta altura com base no padding do host */
+  margin: 0 auto;
+  background-color: transparent;
+}
+
+.form-scroll-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 80px;
+  padding-right: 8px; /* espaço para evitar sobreposição com scroll */
 }
 
 .form-estabelecimento {
@@ -57,27 +67,32 @@
 }
 
 .acoes-edicao {
-  margin-top: 20px;
   display: flex;
   gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  background: #ffffff;
+  padding: 16px 0;
+  border-top: 1px solid #e5e7eb;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
 }
 
 .botao-voltar {
   margin-bottom: 12px;
   font-weight: 500;
+  align-self: flex-start;
 }
 
 @media (max-width: 768px) {
+  .card-estabelecimento,
   .form-estabelecimento {
-    padding: 16px;
-  }
-
-  .card-estabelecimento {
     padding: 16px;
   }
 
   .acoes-edicao {
     flex-direction: column;
-    gap: 10px;
+    align-items: stretch;
   }
 }

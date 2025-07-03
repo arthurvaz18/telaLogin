@@ -2,7 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { DxFormModule, DxButtonModule, DxTextBoxModule } from 'devextreme-angular';
+import {
+  DxFormModule,
+  DxButtonModule,
+  DxTextBoxModule,
+  DxSelectBoxModule,
+  DxCheckBoxModule,
+  DxTextAreaModule
+} from 'devextreme-angular';
 
 import { PerfilComponent } from './perfil.component';
 import { EditarComponent } from './editar/editar.component';
@@ -22,7 +29,10 @@ import {PerfilRoutingModule} from "./perfil.routing.module";
     PerfilRoutingModule,
     DxFormModule,
     DxButtonModule,
-    DxTextBoxModule
+    DxTextBoxModule,
+    DxSelectBoxModule,
+    DxCheckBoxModule,
+    DxTextAreaModule
   ]
 })
 export class PerfilModule { }

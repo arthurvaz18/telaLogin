@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Estabelecimento} from "../../../../models/estabelecimento.model";
 import {CadastroService} from "../../../../services/cadastro.service";
+import {TipoEstabelecimentoEnum} from "../../../../models/enums/tipo-estabelecimento.enum";
 
 @Component({
   selector: 'app-visualizar',
@@ -10,6 +11,7 @@ import {CadastroService} from "../../../../services/cadastro.service";
 export class VisualizarComponent implements OnInit {
 
   estabelecimento: Estabelecimento = new Estabelecimento();
+  tipoEstabelecimentoEnum = Object.values(TipoEstabelecimentoEnum);
   alterarCampo = false;
 
   modoEdicao = false;

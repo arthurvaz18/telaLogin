@@ -1,0 +1,31 @@
+package com.sonner.login.model.enums;
+
+public enum TipoEstabelecimentoEnum {
+    RESTAURANTE,
+    LANCHONETE,
+    CONFEITARIA,
+    CAFETERIA,
+    BAR,
+    PUB,
+    PIZZARIA,
+    CHURRASCARIA,
+    FOOD_TRUCK,
+    SORVETERIA,
+    PADARIA,
+    DELICATESSEN,
+
+    CINEMA,
+    TEATRO,
+    CASA_DE_SHOW,
+    CASA_NOTURNA,
+    BOLICHE,
+    PARQUE_DE_DIVERSOES,
+    FLIPPER,
+    SALA_DE_JOGOS,
+    SALAO_DE_FESTAS,
+    CASA_DE_EVENTOS,
+    KARAOKE,
+    LAN_HOUSE,
+    ACADEMIA_DE_DANCA,
+    PARQUE_AQUATICO
+}

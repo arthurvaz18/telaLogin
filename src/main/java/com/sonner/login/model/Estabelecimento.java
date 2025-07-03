@@ -1,6 +1,7 @@
 package com.sonner.login.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sonner.login.model.enums.TipoEstabelecimentoEnum;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -61,6 +63,20 @@ public class Estabelecimento {
 
     @LastModifiedDate
     private LocalDate dataAtualizacao;
+
+    @Column(nullable = false)
+    private Boolean statusEstabelecimento;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TipoEstabelecimentoEnum tipoEstabelecimentoEnum;
+
+    @Column(length = 500)
+    private String logoEstabelecimentoUrl;
+
+    @Column(length = 1000)
+    private String descricaoEstabelecimento;
 
     public Estabelecimento() {
     }
@@ -175,5 +191,37 @@ public class Estabelecimento {
 
     public void setDataAtualizacao(LocalDate dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public Boolean getStatusEstabelecimento() {
+        return statusEstabelecimento;
+    }
+
+    public void setStatusEstabelecimento(Boolean statusEstabelecimento) {
+        this.statusEstabelecimento = statusEstabelecimento;
+    }
+
+    public TipoEstabelecimentoEnum getTipoEstabelecimentoEnum() {
+        return tipoEstabelecimentoEnum;
+    }
+
+    public void setTipoEstabelecimentoEnum(TipoEstabelecimentoEnum tipoEstabelecimentoEnum) {
+        this.tipoEstabelecimentoEnum = tipoEstabelecimentoEnum;
+    }
+
+    public String getLogoEstabelecimentoUrl() {
+        return logoEstabelecimentoUrl;
+    }
+
+    public void setLogoEstabelecimentoUrl(String logoEstabelecimentoUrl) {
+        this.logoEstabelecimentoUrl = logoEstabelecimentoUrl;
+    }
+
+    public String getDescricaoEstabelecimento() {
+        return descricaoEstabelecimento;
+    }
+
+    public void setDescricaoEstabelecimento(String descricaoEstabelecimento) {
+        this.descricaoEstabelecimento = descricaoEstabelecimento;
     }
 }

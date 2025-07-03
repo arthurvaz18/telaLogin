@@ -1,3 +1,5 @@
+import {TipoEstabelecimentoEnum} from "./enums/tipo-estabelecimento.enum";
+
 export class Estabelecimento{
   id?: number;
   cnpj: string;
@@ -13,6 +15,10 @@ export class Estabelecimento{
   telefone: string;
   dataCriacao?: Date;
   dataAtualizacao?: Date;
+  statusEstabelecimento: boolean;
+  tipoEstabelecimentoEnum: TipoEstabelecimentoEnum;
+  logoEstabelecimentoUrl?: string;
+  descricaoEstabelecimento?: string;
 
   constructor(init?: Partial<Estabelecimento>) {
     Object.assign(this, init);

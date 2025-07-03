@@ -19,74 +19,106 @@
     class="botao-voltar"
   ></dx-button>
 
-  <dx-form
-    [formData]="estabelecimento"
-    [colCount]="2"
-    [labelLocation]="'top'"
-    class="form-estabelecimento"
-  >
-    <dxi-item dataField="email" [label]="{ text: 'Email' }" template="emailTemplate"></dxi-item>
-    <dxi-item dataField="senha" [label]="{ text: 'Senha Atual' }" template="senhaTemplate"></dxi-item>
-    <dxi-item dataField="nome" [label]="{ text: 'Nome' }" template="nomeTemplate"></dxi-item>
-    <dxi-item dataField="telefone" [label]="{ text: 'Telefone' }" template="telefoneTemplate"></dxi-item>
-    <dxi-item dataField="cidade" [label]="{ text: 'Cidade' }" template="cidadeTemplate"></dxi-item>
-    <dxi-item dataField="estado" [label]="{ text: 'Estado' }" template="estadoTemplate"></dxi-item>
-    <dxi-item dataField="cep" [label]="{ text: 'CEP' }" template="cepTemplate"></dxi-item>
-    <dxi-item dataField="endereco" [label]="{ text: 'Endereço' }" template="enderecoTemplate"></dxi-item>
-    <dxi-item dataField="complemento" [label]="{ text: 'Complemento' }" template="complementoTemplate"></dxi-item>
+  <div class="form-scroll-wrapper">
+    <dx-form
+      [formData]="estabelecimento"
+      [colCount]="2"
+      [labelLocation]="'top'"
+      class="form-estabelecimento"
+    >
+      <dxi-item dataField="email" [label]="{ text: 'Email' }" template="emailTemplate"></dxi-item>
+      <dxi-item dataField="senha" [label]="{ text: 'Senha Atual' }" template="senhaTemplate"></dxi-item>
+      <dxi-item dataField="nome" [label]="{ text: 'Nome' }" template="nomeTemplate"></dxi-item>
+      <dxi-item dataField="telefone" [label]="{ text: 'Telefone' }" template="telefoneTemplate"></dxi-item>
+      <dxi-item dataField="cidade" [label]="{ text: 'Cidade' }" template="cidadeTemplate"></dxi-item>
+      <dxi-item dataField="estado" [label]="{ text: 'Estado' }" template="estadoTemplate"></dxi-item>
+      <dxi-item dataField="cep" [label]="{ text: 'CEP' }" template="cepTemplate"></dxi-item>
+      <dxi-item dataField="endereco" [label]="{ text: 'Endereço' }" template="enderecoTemplate"></dxi-item>
+      <dxi-item dataField="complemento" [label]="{ text: 'Complemento' }" template="complementoTemplate"></dxi-item>
+      <dxi-item [label]="{ text: 'Tipo Estabelecimento' }" template="tipoEstabelecimentoTemplate"></dxi-item>
+      <dxi-item dataField="statusEstabelecimento" [label]="{ text: 'Status Estabelecimento' }"
+                template="statusEstabelecimentoTemplate"></dxi-item>
+      <dxi-item dataField="descricaoEstabelecimento" [label]="{ text: 'Descricão' }"
+                template="descricaoEstabelecimentoTemplate"></dxi-item>
 
-    <div *dxTemplate="let data of 'emailTemplate'">
-      <dx-text-box [(value)]="estabelecimento.email"></dx-text-box>
+
+      <div *dxTemplate="let data of 'emailTemplate'">
+        <dx-text-box [(value)]="estabelecimento.email"></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'senhaTemplate'">
+        <dx-text-box
+          [(value)]="estabelecimento.senha"
+          mode="password"
+          placeholder="Digite sua senha atual"
+        ></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'nomeTemplate'">
+        <dx-text-box [(value)]="estabelecimento.nome"></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'telefoneTemplate'">
+        <dx-text-box [(value)]="estabelecimento.telefone" mask="(00) 0 0000-0000"></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'cidadeTemplate'">
+        <dx-text-box [(value)]="estabelecimento.cidade"></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'estadoTemplate'">
+        <dx-text-box [(value)]="estabelecimento.estado"></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'cepTemplate'">
+        <dx-text-box [(value)]="estabelecimento.cep"></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'enderecoTemplate'">
+        <dx-text-box [(value)]="estabelecimento.endereco"></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'complementoTemplate'">
+        <dx-text-box [(value)]="estabelecimento.complemento"></dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'tipoEstabelecimentoTemplate'">
+        <dx-select-box
+          [items]="tipoEstabelecimentoEnum"
+          [(value)]="estabelecimento.tipoEstabelecimentoEnum"
+          placeholder="Selecione o tipo"
+          displayExpr="toString"
+          valueExpr="toString">
+        </dx-select-box>
+      </div>
+
+      <div *dxTemplate="let data of 'statusEstabelecimentoTemplate'">
+        <dx-check-box
+          [(value)]="estabelecimento.statusEstabelecimento">
+        </dx-check-box>
+      </div>
+
+      <div *dxTemplate="let data of 'descricaoEstabelecimentoTemplate'">
+        <dx-text-area
+          [(value)]="estabelecimento.descricaoEstabelecimento">
+        </dx-text-area>
+      </div>
+
+    </dx-form>
+
+
+    <div class="acoes-edicao">
+      <dx-button
+        text="Salvar Alterações"
+        type="success"
+        (onClick)="salvarAlteracoes()"
+      ></dx-button>
+
+      <dx-button
+        text="Cancelar"
+        type="normal"
+        (onClick)="cancelarEdicao()"
+      ></dx-button>
     </div>
-
-    <div *dxTemplate="let data of 'senhaTemplate'">
-      <dx-text-box
-        [(value)]="estabelecimento.senha"
-        mode="password"
-        placeholder="Digite sua senha atual"
-      ></dx-text-box>
-    </div>
-
-    <div *dxTemplate="let data of 'nomeTemplate'">
-      <dx-text-box [(value)]="estabelecimento.nome"></dx-text-box>
-    </div>
-
-    <div *dxTemplate="let data of 'telefoneTemplate'">
-      <dx-text-box [(value)]="estabelecimento.telefone" mask="(00) 0 0000-0000"></dx-text-box>
-    </div>
-
-    <div *dxTemplate="let data of 'cidadeTemplate'">
-      <dx-text-box [(value)]="estabelecimento.cidade"></dx-text-box>
-    </div>
-
-    <div *dxTemplate="let data of 'estadoTemplate'">
-      <dx-text-box [(value)]="estabelecimento.estado"></dx-text-box>
-    </div>
-
-    <div *dxTemplate="let data of 'cepTemplate'">
-      <dx-text-box [(value)]="estabelecimento.cep"></dx-text-box>
-    </div>
-
-    <div *dxTemplate="let data of 'enderecoTemplate'">
-      <dx-text-box [(value)]="estabelecimento.endereco"></dx-text-box>
-    </div>
-
-    <div *dxTemplate="let data of 'complementoTemplate'">
-      <dx-text-box [(value)]="estabelecimento.complemento"></dx-text-box>
-    </div>
-  </dx-form>
-
-  <div class="acoes-edicao">
-    <dx-button
-      text="Salvar Alterações"
-      type="success"
-      (onClick)="salvarAlteracoes()"
-    ></dx-button>
-
-    <dx-button
-      text="Cancelar"
-      type="normal"
-      (onClick)="cancelarEdicao()"
-    ></dx-button>
   </div>
 </div>
