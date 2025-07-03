@@ -20,12 +20,10 @@ import {HistoricoComponent} from './historico/historico.component';
 import {LocalizacaoComponent} from './localizacao/localizacao.component';
 import {ConfiguracoesComponent} from './configuracoes/configuracoes.component';
 import {HomeRoutingModule} from "./home.routing.module";
-import {EstabelecimentoComponent} from "./estabelecimento/estabelecimento.component";
 
 @NgModule({
   declarations: [
     HomeComponent,
-    EstabelecimentoComponent,
     CardapioComponent,
     BebidasComponent,
     PedidosComponent,
