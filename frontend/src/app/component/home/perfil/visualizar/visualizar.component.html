@@ -41,6 +41,12 @@
                 template="statusEstabelecimentoTemplate"></dxi-item>
       <dxi-item dataField="descricaoEstabelecimento" [label]="{ text: 'Descricão' }"
                 template="descricaoEstabelecimentoTemplate"></dxi-item>
+      <dxi-item [label]="{ text: 'aberto de' }" template="diaSemanaInicioTemplate"></dxi-item>
+      <dxi-item [label]="{ text: 'Até' }" template="diaSemanaFimTemplate"></dxi-item>
+      <dxi-item dataField="horaAbertura" [label]="{ text: 'Horário Inicio' }"
+                template="horaAberturaTemplate"></dxi-item>
+      <dxi-item dataField="horaFechamento" [label]="{ text: 'Horário Fim' }"
+                template="horaFechamentoTemplate"></dxi-item>
 
       <div *dxTemplate="let data of 'cnpjTemplate'">
         <dx-text-box
@@ -134,6 +140,44 @@
           [(value)]="estabelecimento.descricaoEstabelecimento"
           [disabled]="!alterarCampo">
         </dx-text-area>
+      </div>
+
+      <div *dxTemplate="let data of 'diaSemanaInicioTemplate'">
+        <dx-select-box
+          [items]="diaSemanaEnum"
+          [value]="estabelecimento.diaSemanaInicio"
+          [disabled]="!alterarCampo">
+        </dx-select-box>
+      </div>
+
+      <div *dxTemplate="let data of 'diaSemanaFimTemplate'">
+        <dx-select-box
+          [items]="diaSemanaEnum"
+          [(value)]="estabelecimento.diaSemanaFim"
+          [disabled]="!alterarCampo">
+        </dx-select-box>
+      </div>
+
+      <div *dxTemplate="let data of 'horaAberturaTemplate'">
+        <dx-date-box
+          [value]="estabelecimento.horaAbertura"
+          (valueChange)="onHoraAberturaChange($event)"
+          displayFormat="HH:mm"
+          type="datetime"
+          [useMaskBehavior]="true"
+          [disabled]="!alterarCampo">
+        </dx-date-box>
+      </div>
+
+      <div *dxTemplate="let data of 'horaFechamentoTemplate'">
+        <dx-date-box
+          [value]="estabelecimento.horaFechamento"
+          (valueChange)="onFechamentoChange($event)"
+          displayFormat="HH:mm"
+          type="datetime"
+          [useMaskBehavior]="true"
+          [disabled]="!alterarCampo">
+        </dx-date-box>
       </div>
 
     </dx-form>

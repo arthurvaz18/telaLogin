@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Estabelecimento} from "../../../../models/estabelecimento.model";
 import {CadastroService} from "../../../../services/cadastro.service";
 import {TipoEstabelecimentoEnum} from "../../../../models/enums/tipo-estabelecimento.enum";
+import {DiaSemanaEnum} from "../../../../models/enums/dia-semana-enum";
 
 @Component({
   selector: 'app-visualizar',
@@ -12,6 +13,8 @@ export class VisualizarComponent implements OnInit {
 
   estabelecimento: Estabelecimento = new Estabelecimento();
   tipoEstabelecimentoEnum = Object.values(TipoEstabelecimentoEnum);
+  diaSemanaEnum = Object.values(DiaSemanaEnum);
+
   alterarCampo = false;
 
   modoEdicao = false;
@@ -65,5 +68,29 @@ export class VisualizarComponent implements OnInit {
         }
       });
     }
+  }
+
+  onHoraAberturaChange(dataHora: Date | number | string) {
+    if (dataHora instanceof Date) {
+      this.estabelecimento.horaAbertura = this.formatarHoraParaLocalTime(dataHora);
+
+    } else {
+      const date = new Date(dataHora);
+      this.estabelecimento.horaAbertura = this.formatarHoraParaLocalTime(date);
+    }
+  }
+
+  onFechamentoChange(dataHora: Date | number | string) {
+    if (dataHora instanceof Date) {
+      this.estabelecimento.horaFechamento = this.formatarHoraParaLocalTime(dataHora);
+
+    } else {
+      const date = new Date(dataHora);
+      this.estabelecimento.horaFechamento = this.formatarHoraParaLocalTime(date);
+    }
+  }
+
+  formatarHoraParaLocalTime(date: Date): string {
+    return date.toISOString().substring(11, 19);
   }
 }
