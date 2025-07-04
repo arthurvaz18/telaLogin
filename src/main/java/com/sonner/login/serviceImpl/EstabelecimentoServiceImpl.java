@@ -54,6 +54,10 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
         estabelecimentoExistente.setStatusEstabelecimento(estabelecimentoAtualizado.getStatusEstabelecimento());
         estabelecimentoExistente.setTipoEstabelecimentoEnum(estabelecimentoAtualizado.getTipoEstabelecimentoEnum());
         estabelecimentoExistente.setDescricaoEstabelecimento(estabelecimentoAtualizado.getDescricaoEstabelecimento());
+        estabelecimentoExistente.setDiaSemanaInicio(estabelecimentoAtualizado.getDiaSemanaInicio());
+        estabelecimentoExistente.setDiaSemanaFim(estabelecimentoAtualizado.getDiaSemanaFim());
+        estabelecimentoExistente.setHoraAbertura(estabelecimentoAtualizado.getHoraAbertura());
+        estabelecimentoExistente.setHoraFechamento(estabelecimentoAtualizado.getHoraFechamento());
 
         return estabelecimentoRepository.save(estabelecimentoExistente);
     }

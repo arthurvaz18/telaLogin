@@ -8,7 +8,7 @@ import {
   DxTextBoxModule,
   DxSelectBoxModule,
   DxCheckBoxModule,
-  DxTextAreaModule
+  DxTextAreaModule, DxDateBoxModule
 } from 'devextreme-angular';
 
 import { PerfilComponent } from './perfil.component';
@@ -32,7 +32,8 @@ import {PerfilRoutingModule} from "./perfil.routing.module";
     DxTextBoxModule,
     DxSelectBoxModule,
     DxCheckBoxModule,
-    DxTextAreaModule
+    DxTextAreaModule,
+    DxDateBoxModule
   ]
 })
 export class PerfilModule { }

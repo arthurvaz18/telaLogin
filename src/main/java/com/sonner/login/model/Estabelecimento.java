@@ -1,6 +1,7 @@
 package com.sonner.login.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sonner.login.model.enums.DiaSemanaEnum;
 import com.sonner.login.model.enums.TipoEstabelecimentoEnum;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.springframework.data.annotation.CreatedDate;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "estabelecimento")
@@ -73,6 +75,17 @@ public class Estabelecimento {
 
     @Column(length = 1000)
     private String descricaoEstabelecimento;
+
+    @Enumerated(EnumType.STRING)
+    private DiaSemanaEnum diaSemanaInicio;
+
+    @Enumerated(EnumType.STRING)
+    private DiaSemanaEnum diaSemanaFim;
+
+    private LocalTime horaAbertura;
+
+    private LocalTime horaFechamento;
+
 
     public Estabelecimento() {
     }
@@ -219,5 +232,37 @@ public class Estabelecimento {
 
     public void setDescricaoEstabelecimento(String descricaoEstabelecimento) {
         this.descricaoEstabelecimento = descricaoEstabelecimento;
+    }
+
+    public DiaSemanaEnum getDiaSemanaInicio() {
+        return diaSemanaInicio;
+    }
+
+    public void setDiaSemanaInicio(DiaSemanaEnum diaSemanaInicio) {
+        this.diaSemanaInicio = diaSemanaInicio;
+    }
+
+    public DiaSemanaEnum getDiaSemanaFim() {
+        return diaSemanaFim;
+    }
+
+    public void setDiaSemanaFim(DiaSemanaEnum diaSemanaFim) {
+        this.diaSemanaFim = diaSemanaFim;
+    }
+
+    public LocalTime getHoraAbertura() {
+        return horaAbertura;
+    }
+
+    public void setHoraAbertura(LocalTime horaAbertura) {
+        this.horaAbertura = horaAbertura;
+    }
+
+    public LocalTime getHoraFechamento() {
+        return horaFechamento;
+    }
+
+    public void setHoraFechamento(LocalTime horaFechamento) {
+        this.horaFechamento = horaFechamento;
     }
 }
