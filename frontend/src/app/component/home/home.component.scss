@@ -13,8 +13,9 @@
 .menu-panel-content {
   background-color: white;
   width: 250px;
-  height: 100%;
+  height: calc(100vh - 56px); /* altura total menos o toolbar */
   padding-top: 10px;
+  overflow-y: auto; /* Habilita scroll vertical */
 }
 
 .menu-item {

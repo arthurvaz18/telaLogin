@@ -1,6 +1,19 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+interface SubItem {
+  texto: string;
+  caminho: string;
+}
+
+interface ItemMenu {
+  texto: string;
+  icon: string;
+  caminho?: string;
+  expanded?: boolean;
+  subItens?: SubItem[];
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +24,7 @@ export class HomeComponent {
   menuAberto = false;
   rotaAtual: string;
 
-  itensMenu = [
+  itensMenu: ItemMenu[] = [
     {
       texto: 'Perfil',
       icon: 'user',
@@ -26,7 +39,7 @@ export class HomeComponent {
       icon: 'home',
       expanded: false,
       subItens: [
-        {texto: 'Informações', caminho: '/home/estabelecimento/info-estabelecimento'},
+        { texto: 'Informações', caminho: '/home/estabelecimento/info-estabelecimento' },
       ]
     },
     { texto: 'Cardápio', caminho: '/home/cardapio', icon: 'doc' },
@@ -56,11 +69,11 @@ export class HomeComponent {
     this.menuAberto = !this.menuAberto;
   }
 
-  toggleExpand(item: any) {
+  toggleExpand(item: ItemMenu) {
     item.expanded = !item.expanded;
   }
 
-  aoClicarItem(item: any, event?: MouseEvent): void {
+  aoClicarItem(item: ItemMenu | SubItem, event?: MouseEvent): void {
     if (event) event.stopPropagation();
     this.router.navigate([item.caminho]);
     this.rotaAtual = item.caminho;

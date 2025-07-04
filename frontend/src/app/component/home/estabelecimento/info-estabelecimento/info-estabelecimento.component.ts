@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Estabelecimento} from "../../../../models/estabelecimento.model";
 import {CadastroService} from "../../../../services/cadastro.service";
 import {TipoEstabelecimentoEnum} from "../../../../models/enums/tipo-estabelecimento.enum";
+import {DiaSemanaEnum} from "../../../../models/enums/dia-semana-enum";
 
 @Component({
   selector: 'app-info-estabelecimento',
@@ -11,6 +12,8 @@ import {TipoEstabelecimentoEnum} from "../../../../models/enums/tipo-estabelecim
 export class InfoEstabelecimentoComponent implements OnInit {
   estabelecimento: Estabelecimento = new Estabelecimento();
   tipoEstabelecimentoEnum = Object.values(TipoEstabelecimentoEnum);
+  diaSemanaEnum = Object.values(DiaSemanaEnum);
+
 
   constructor(private cadastroService: CadastroService) {
   }

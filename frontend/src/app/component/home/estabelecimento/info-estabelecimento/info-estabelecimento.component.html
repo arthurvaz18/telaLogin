@@ -7,22 +7,36 @@
   >
     <dxi-item dataField="nome" [label]="{ text: 'Nome do Estabelecimento' }" template="nomeTemplate"></dxi-item>
 
-    <dxi-item itemType="group" [colCount]="2">
+    <dxi-item itemType="group" class="group-horizontal" [colCount]="2">
       <dxi-item dataField="cnpj" [label]="{ text: 'CNPJ' }" template="cnpjTemplate"></dxi-item>
-      <dxi-item dataField="tipoEstabelecimentoEnum" [label]="{ text: 'Tipo do Estabelecimento' }" template="tipoEstabelecimentoEnumTemplate"></dxi-item>
+      <dxi-item dataField="tipoEstabelecimentoEnum" [label]="{ text: 'Tipo do Estabelecimento' }"
+                template="tipoEstabelecimentoEnumTemplate"></dxi-item>
     </dxi-item>
-
 
     <dxi-item dataField="statusEstabelecimento" [label]="{ text: 'Status' }" template="statusTemplate"></dxi-item>
 
     <dxi-item dataField="descricaoEstabelecimento" [label]="{ text: 'Descrição' }"
               template="descricaoTemplate"></dxi-item>
 
-    <dxi-item itemType="group" [colCount]="2">
+    <dxi-item itemType="group" class="group-horizontal" [colCount]="2">
       <dxi-item dataField="dataCriacao" [label]="{ text: 'Data de Criação' }" template="dataCriacaoTemplate"></dxi-item>
       <dxi-item dataField="dataAtualizacao" [label]="{ text: 'Última Atualização' }"
                 template="dataAtualizacaoTemplate"></dxi-item>
     </dxi-item>
+
+    <dxi-item itemType="group" class="group-horizontal" [colCount]="2">
+      <dxi-item [label]="{ text: 'Aberto de' }" template="diaSemanaInicioTemplate"></dxi-item>
+      <dxi-item [label]="{ text: 'Até' }" template="diaSemanaFimTemplate"></dxi-item>
+    </dxi-item>
+
+    <dxi-item itemType="group" class="group-horizontal" [colCount]="2">
+      <dxi-item dataField="horaAbertura" [label]="{ text: 'Horário Início' }"
+                template="horaAberturaTemplate"></dxi-item>
+      <dxi-item dataField="horaFechamento" [label]="{ text: 'Horário Fim' }"
+                template="horaFechamentoTemplate"></dxi-item>
+    </dxi-item>
+
+    <!-- Templates -->
 
     <div *dxTemplate="let data of 'nomeTemplate'">
       <div class="campo-valor nome">{{ estabelecimento.nome }}</div>
@@ -38,9 +52,9 @@
     </div>
 
     <div *dxTemplate="let data of 'statusTemplate'">
-    <span class="badge-status" [ngClass]="estabelecimento.statusEstabelecimento ? 'ativo' : 'inativo'">
-      {{ estabelecimento.statusEstabelecimento ? 'Ativo' : 'Inativo' }}
-    </span>
+      <span class="badge-status" [ngClass]="estabelecimento.statusEstabelecimento ? 'ativo' : 'inativo'">
+        {{ estabelecimento.statusEstabelecimento ? 'Ativo' : 'Inativo' }}
+      </span>
     </div>
 
     <div *dxTemplate="let data of 'descricaoTemplate'">
@@ -79,6 +93,46 @@
         [readOnly]="true"
         type="date"
         displayFormat="dd/MM/yyyy"
+        class="campo-box">
+      </dx-date-box>
+    </div>
+
+    <div *dxTemplate="let data of 'diaSemanaInicioTemplate'">
+      <dx-select-box
+        [items]="diaSemanaEnum"
+        [(value)]="estabelecimento.diaSemanaInicio"
+        [disabled]="true"
+        class="campo-box">
+      </dx-select-box>
+    </div>
+
+    <div *dxTemplate="let data of 'diaSemanaFimTemplate'">
+      <dx-select-box
+        [items]="diaSemanaEnum"
+        [(value)]="estabelecimento.diaSemanaFim"
+        [disabled]="true"
+        class="campo-box">
+      </dx-select-box>
+    </div>
+
+    <div *dxTemplate="let data of 'horaAberturaTemplate'">
+      <dx-date-box
+        [value]="estabelecimento.horaAbertura"
+        displayFormat="HH:mm"
+        type="datetime"
+        [useMaskBehavior]="true"
+        [disabled]="true"
+        class="campo-box">
+      </dx-date-box>
+    </div>
+
+    <div *dxTemplate="let data of 'horaFechamentoTemplate'">
+      <dx-date-box
+        [value]="estabelecimento.horaFechamento"
+        displayFormat="HH:mm"
+        type="datetime"
+        [useMaskBehavior]="true"
+        [disabled]="true"
         class="campo-box">
       </dx-date-box>
     </div>
