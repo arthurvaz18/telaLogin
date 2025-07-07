@@ -13,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "estabelecimento")
@@ -85,6 +86,9 @@ public class Estabelecimento {
     private LocalTime horaAbertura;
 
     private LocalTime horaFechamento;
+
+    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Evento> eventos;
 
 
     public Estabelecimento() {
@@ -264,5 +268,13 @@ public class Estabelecimento {
 
     public void setHoraFechamento(LocalTime horaFechamento) {
         this.horaFechamento = horaFechamento;
+    }
+
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
     }
 }

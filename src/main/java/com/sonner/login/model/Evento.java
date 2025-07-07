@@ -6,6 +6,7 @@ import com.sonner.login.model.enums.StatusEventoEnum;
 import com.sonner.login.model.enums.TipoEventoEnum;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "evento")
+@EntityListeners(AuditingEntityListener.class)
 public class Evento {
     @Id
     @GeneratedValue
