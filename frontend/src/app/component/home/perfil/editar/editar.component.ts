@@ -24,19 +24,23 @@ export class EditarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const email = localStorage.getItem('emailEstabelecimento');
+    this.buscarDadosEstabelecimento()
+  }
+
+  buscarDadosEstabelecimento(): void{
+    const email = this.authService.getUserEmail();
     if (email) {
       this.estabelecimentoService.buscarEstabelecimentoPorEmail(email).subscribe({
         next: (dados) => {
           this.estabelecimento = dados;
         },
         error: () => {
-          console.log("qual email?:", localStorage)
+          console.error("Erro ao carregar os dados do estabelecimento.");
           alert('Erro ao carregar os dados do estabelecimento.');
         }
       });
     } else {
-      alert('Email do estabelecimento não encontrado.');
+      alert('Email do estabelecimento não encontrado no token.');
     }
   }
 

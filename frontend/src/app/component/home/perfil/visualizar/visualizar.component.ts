@@ -27,6 +27,10 @@ export class VisualizarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.buscarDadosEstabelecimento()
+  }
+
+  buscarDadosEstabelecimento(): void{
     const email = this.authService.getUserEmail();
     if (email) {
       this.estabelecimentoService.buscarEstabelecimentoPorEmail(email).subscribe({
@@ -41,21 +45,6 @@ export class VisualizarComponent implements OnInit {
     } else {
       alert('Email do estabelecimento não encontrado no token.');
     }
-  }
-
-  salvarAlteracoes(): void {
-    const email = this.authService.getUserEmail();
-    const senha = this.estabelecimento.senha;
-
-    if (!email || !senha) {
-      alert('Email ou senha ausente para salvar as alterações.');
-      return;
-    }
-
-    this.estabelecimentoService.editarEstabelecimento(this.estabelecimento, email, senha).subscribe({
-      next: () => alert('Alterações salvas com sucesso.'),
-      error: () => alert('Erro ao salvar alterações.')
-    });
   }
 
   ativarEdicao(): void {
