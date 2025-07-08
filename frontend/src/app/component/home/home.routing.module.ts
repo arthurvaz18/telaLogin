@@ -8,7 +8,6 @@ import {PedidosComponent} from './pedidos/pedidos.component';
 import {HistoricoComponent} from './historico/historico.component';
 import {LocalizacaoComponent} from './localizacao/localizacao.component';
 import {ConfiguracoesComponent} from './configuracoes/configuracoes.component';
-import {EventoComponent} from "./evento/evento.component";
 
 const routes: Routes = [
   {
@@ -18,7 +17,9 @@ const routes: Routes = [
       {path: 'perfil', loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilModule)},
 
       {path: 'estabelecimento', loadChildren: () => import('./estabelecimento/estabelecimento.module').then(m => m.EstabelecimentoModule)},
-      { path: 'evento', component: EventoComponent },
+
+      {path: 'evento', loadChildren: () => import('./evento/evento.module').then(m => m.EventoModule)},
+
       { path: 'cardapio', component: CardapioComponent },
       { path: 'bebidas', component: BebidasComponent },
       { path: 'pedidos', component: PedidosComponent },
