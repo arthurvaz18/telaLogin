@@ -3,6 +3,8 @@ import {Estabelecimento} from "../../../../models/estabelecimento.model";
 import {CadastroService} from "../../../../services/cadastro.service";
 import {TipoEstabelecimentoEnum} from "../../../../models/enums/tipo-estabelecimento.enum";
 import {DiaSemanaEnum} from "../../../../models/enums/dia-semana-enum";
+import {EstabelecimentoService} from "../../../../services/estabelecimento.service";
+import {AuthService} from "../../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-editar',
@@ -16,13 +18,15 @@ export class EditarComponent implements OnInit {
 
   modoEdicao = false;
 
-  constructor(private cadastroService: CadastroService) {
+  constructor(private cadastroService: CadastroService,
+              private estabelecimentoService: EstabelecimentoService,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
     const email = localStorage.getItem('emailEstabelecimento');
     if (email) {
-      this.cadastroService.buscarEstabelecimentoPorEmail(email).subscribe({
+      this.estabelecimentoService.buscarEstabelecimentoPorEmail(email).subscribe({
         next: (dados) => {
           this.estabelecimento = dados;
         },
@@ -37,7 +41,7 @@ export class EditarComponent implements OnInit {
   }
 
   salvarAlteracoes(): void {
-    const email = localStorage.getItem('emailEstabelecimento');
+    const email = this.authService.getUserEmail();
     const senha = this.estabelecimento.senha;
 
     if (!email || !senha) {
@@ -45,7 +49,7 @@ export class EditarComponent implements OnInit {
       return;
     }
 
-    this.cadastroService.editarEstabelecimento(this.estabelecimento, email, senha).subscribe({
+    this.estabelecimentoService.editarEstabelecimento(this.estabelecimento, email, senha).subscribe({
       next: () => alert('Alterações salvas com sucesso.'),
       error: () => alert('Erro ao salvar alterações.')
     });
@@ -59,7 +63,7 @@ export class EditarComponent implements OnInit {
     this.modoEdicao = false;
     const email = localStorage.getItem('emailEstabelecimento');
     if (email) {
-      this.cadastroService.buscarEstabelecimentoPorEmail(email).subscribe({
+      this.estabelecimentoService.buscarEstabelecimentoPorEmail(email).subscribe({
         next: (dados) => {
           this.estabelecimento = dados;
         }

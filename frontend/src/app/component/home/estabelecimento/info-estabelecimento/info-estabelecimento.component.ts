@@ -3,6 +3,7 @@ import {Estabelecimento} from "../../../../models/estabelecimento.model";
 import {CadastroService} from "../../../../services/cadastro.service";
 import {TipoEstabelecimentoEnum} from "../../../../models/enums/tipo-estabelecimento.enum";
 import {DiaSemanaEnum} from "../../../../models/enums/dia-semana-enum";
+import {EstabelecimentoService} from "../../../../services/estabelecimento.service";
 
 @Component({
   selector: 'app-info-estabelecimento',
@@ -15,13 +16,14 @@ export class InfoEstabelecimentoComponent implements OnInit {
   diaSemanaEnum = Object.values(DiaSemanaEnum);
 
 
-  constructor(private cadastroService: CadastroService) {
+  constructor(private cadastroService: CadastroService,
+              private estabelecimentoService: EstabelecimentoService) {
   }
 
   ngOnInit(): void {
     const email = localStorage.getItem('emailEstabelecimento');
     if (email) {
-      this.cadastroService.buscarEstabelecimentoPorEmail(email).subscribe({
+      this.estabelecimentoService.buscarEstabelecimentoPorEmail(email).subscribe({
         next: (dados) => {
           this.estabelecimento = dados;
         },

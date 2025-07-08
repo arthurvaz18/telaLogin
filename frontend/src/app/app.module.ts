@@ -5,8 +5,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {DxDrawerModule, DxFormModule, DxListModule, DxSelectBoxModule, DxTextBoxModule} from "devextreme-angular";
 import {ComponentModule} from "./component/component.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HomeModule} from "./component/home/home.module";
+import {AuthInterceptor} from "./services/interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {HomeModule} from "./component/home/home.module";
     DxDrawerModule,
     DxListModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

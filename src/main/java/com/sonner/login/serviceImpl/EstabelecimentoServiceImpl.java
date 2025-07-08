@@ -2,10 +2,12 @@ package com.sonner.login.serviceImpl;
 
 import com.sonner.login.model.Estabelecimento;
 import com.sonner.login.repository.EstabelecimentoRepository;
+import com.sonner.login.security.PasswordEncoderConfig;
 import com.sonner.login.service.EstabelecimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,14 +21,20 @@ import java.util.Optional;
 public class EstabelecimentoServiceImpl implements EstabelecimentoService {
 
     @Autowired
-    EstabelecimentoRepository estabelecimentoRepository;
+    private EstabelecimentoRepository estabelecimentoRepository;
 
-    public EstabelecimentoServiceImpl(EstabelecimentoRepository repository) {
-        this.estabelecimentoRepository = repository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public EstabelecimentoServiceImpl(EstabelecimentoRepository estabelecimentoRepository, PasswordEncoder passwordEncoder) {
+        this.estabelecimentoRepository = estabelecimentoRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public Estabelecimento criarEstabelecimento(Estabelecimento estabelecimento) {
+        String senhaCriptografada = passwordEncoder.encode(estabelecimento.getSenha());
+        estabelecimento.setSenha(senhaCriptografada);
         return estabelecimentoRepository.save(estabelecimento);
     }
 
@@ -38,12 +46,15 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
 
     @Override
     public Estabelecimento atualizarEstabelecimento(String email, String senha, Estabelecimento estabelecimentoAtualizado) {
-        Estabelecimento estabelecimentoExistente = estabelecimentoRepository.findByEmailAndSenha(email, senha)
+        Estabelecimento estabelecimentoExistente = estabelecimentoRepository.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+
+        if (!passwordEncoder.matches(senha, estabelecimentoExistente.getSenha())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Senha inválida");
+        }
 
         estabelecimentoExistente.setEmail(estabelecimentoAtualizado.getEmail());
         estabelecimentoExistente.setNome(estabelecimentoAtualizado.getNome());
-        estabelecimentoExistente.setSenha(estabelecimentoAtualizado.getSenha());
         estabelecimentoExistente.setPais(estabelecimentoAtualizado.getPais());
         estabelecimentoExistente.setEstado(estabelecimentoAtualizado.getEstado());
         estabelecimentoExistente.setCep(estabelecimentoAtualizado.getCep());
@@ -59,8 +70,10 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
         estabelecimentoExistente.setHoraAbertura(estabelecimentoAtualizado.getHoraAbertura());
         estabelecimentoExistente.setHoraFechamento(estabelecimentoAtualizado.getHoraFechamento());
 
+
         return estabelecimentoRepository.save(estabelecimentoExistente);
     }
+
 
     @Override
     public Estabelecimento deletarEstabelecimento(Integer id) {
@@ -90,22 +103,16 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
     }
 
     @Override
-    public ResponseEntity<?> logarEstabelecimento(Map<String, String> login) {
-        String email = login.get("email");
-        String senha = login.get("senha");
-
-        Estabelecimento estabelecimento = estabelecimentoRepository.findByEmailAndSenha(email, senha).orElse(null);
-
-        if (estabelecimento != null) {
-            return ResponseEntity.ok(estabelecimento);
-        } else {
-            return ResponseEntity.status(401).body("Email ou senha inválidos");
-        }
-    }
-
-    @Override
     public Optional<Estabelecimento> buscarEstabelecimentoPorEmail(String email) {
         return estabelecimentoRepository.findByEmail(email);
     }
 
+    @Override
+    public Optional<Estabelecimento> autenticar(String email, String senha) {
+        Optional<Estabelecimento> est = estabelecimentoRepository.findByEmail(email);
+        if (est.isPresent() && passwordEncoder.matches(senha, est.get().getSenha())) {
+            return est;
+        }
+        return Optional.empty();
+    }
 }

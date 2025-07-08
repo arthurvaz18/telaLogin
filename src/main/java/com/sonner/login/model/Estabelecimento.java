@@ -1,5 +1,6 @@
 package com.sonner.login.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sonner.login.model.enums.DiaSemanaEnum;
 import com.sonner.login.model.enums.TipoEstabelecimentoEnum;
@@ -88,6 +89,7 @@ public class Estabelecimento {
     private LocalTime horaFechamento;
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Evento> eventos;
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CadastroService } from '../../../services/cadastro.service';
 import { Estabelecimento } from '../../../models/estabelecimento.model';
+import {EstabelecimentoService} from "../../../services/estabelecimento.service";
 
 @Component({
   selector: 'app-perfil',
@@ -11,12 +12,13 @@ export class PerfilComponent implements OnInit {
 
   estabelecimento: Estabelecimento = new Estabelecimento();
 
-  constructor(private cadastroService: CadastroService) {}
+  constructor(private cadastroService: CadastroService,
+              private estabelecimentoService: EstabelecimentoService) {}
 
   ngOnInit(): void {
     const email = localStorage.getItem('emailEstabelecimento');
     if (email) {
-      this.cadastroService.buscarEstabelecimentoPorEmail(email).subscribe({
+      this.estabelecimentoService.buscarEstabelecimentoPorEmail(email).subscribe({
         next: (dados) => {
           this.estabelecimento = dados;
         },
@@ -39,7 +41,7 @@ export class PerfilComponent implements OnInit {
       return;
     }
 
-    this.cadastroService.editarEstabelecimento(this.estabelecimento, email, senha).subscribe({
+    this.estabelecimentoService.editarEstabelecimento(this.estabelecimento, email, senha).subscribe({
       next: () => alert('Alterações salvas com sucesso.'),
       error: () => alert('Erro ao salvar alterações.')
     });

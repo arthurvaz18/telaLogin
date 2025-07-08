@@ -14,17 +14,4 @@ export class CadastroService {
   cadastrarEstabelecimento(estabelecimento: Estabelecimento): Observable<Estabelecimento> {
     return this.http.post<Estabelecimento>(this.baseUrl, estabelecimento);
   }
-
-  editarEstabelecimento(estabelecimento: Estabelecimento, email: string, senha: string): Observable<Estabelecimento> {
-    const params = new HttpParams()
-      .set('email', email)
-      .set('senha', senha);
-
-    return this.http.put<Estabelecimento>(`${this.baseUrl}/editar`, estabelecimento, { params });
-  }
-
-  buscarEstabelecimentoPorEmail(email: string): Observable<Estabelecimento> {
-    const params = new HttpParams().set('email', email);
-    return this.http.get<Estabelecimento>(`${this.baseUrl}/buscaPorEmail`, { params });
-  }
 }

@@ -1,21 +1,23 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {CadastroComponent} from "./cadastro/cadastro.component";
-import {LoginComponent} from "./login/login.component";
-import {HomeComponent} from "./home/home.component";
-import {FormsModule} from "@angular/forms";
-import {ComponentRoutingModule} from "./component.routing.module";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { LoginComponent } from './login/login.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
 import {
-  DxButtonModule, DxDrawerModule,
-  DxFormModule, DxListModule,
+  DxButtonModule,
+  DxDrawerModule,
+  DxFormModule,
+  DxListModule,
   DxMenuModule,
   DxSelectBoxModule,
-  DxTextBoxModule, DxTileViewModule,
+  DxTextBoxModule,
+  DxTileViewModule,
   DxToolbarModule
-} from "devextreme-angular";
-import {InicioComponent} from "./inicio/inicio.component";
-import {NavbarComponent} from "./navbar/navbar.component";
-
+} from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,6 @@ import {NavbarComponent} from "./navbar/navbar.component";
   imports: [
     CommonModule,
     FormsModule,
-    ComponentRoutingModule,
     DxTextBoxModule,
     DxSelectBoxModule,
     DxFormModule,
@@ -36,8 +37,14 @@ import {NavbarComponent} from "./navbar/navbar.component";
     DxMenuModule,
     DxTileViewModule,
     DxDrawerModule,
-    DxListModule,
+    DxListModule
+  ],
+  exports: [
+    CadastroComponent,
+    LoginComponent,
+    InicioComponent,
+    NavbarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ComponentModule { }
+export class ComponentModule {}
