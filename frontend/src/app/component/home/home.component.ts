@@ -42,6 +42,7 @@ export class HomeComponent {
         { texto: 'Informações', caminho: '/home/estabelecimento/info-estabelecimento' },
       ]
     },
+    { texto: 'Evento', caminho: '/home/evento', icon: 'event' },
     { texto: 'Cardápio', caminho: '/home/cardapio', icon: 'doc' },
     { texto: 'Bebidas', caminho: '/home/bebidas', icon: 'coffee' },
     { texto: 'Pedidos', caminho: '/home/pedidos', icon: 'cart' },
