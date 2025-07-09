@@ -1,5 +1,6 @@
 import {TipoEstabelecimentoEnum} from "./enums/tipo-estabelecimento.enum";
 import {DiaSemanaEnum} from "./enums/dia-semana-enum";
+import {Evento} from "./evento.model";
 
 export class Estabelecimento{
   id?: number;
@@ -24,6 +25,7 @@ export class Estabelecimento{
   diaSemanaFim?: DiaSemanaEnum;
   horaAbertura?: string;
   horaFechamento?: string;
+  evento:Evento;
 
   constructor(init?: Partial<Estabelecimento>) {
     Object.assign(this, init);
