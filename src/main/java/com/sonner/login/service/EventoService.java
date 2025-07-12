@@ -11,6 +11,10 @@ public interface EventoService {
     Evento buscarEvento(Integer id);
     Evento editarEvento(Evento evento);
     void deletarEvento(Integer id);
+
+
     List<Evento> listarEventos(TipoEventoEnum tipoEventoEnum);
     List<Evento> listarTodosEventos();
+    List<Evento> listarEventosPorEstabelecimento(String emailLogado);
+
 }

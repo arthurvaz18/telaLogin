@@ -56,4 +56,11 @@ public class EventoResource {
     public ResponseEntity<List<Evento>> listarPorTipo(@PathVariable TipoEventoEnum tipo) {
         return ResponseEntity.ok(eventoService.listarEventos(tipo));
     }
+
+    @GetMapping("/meus-eventos")
+    public ResponseEntity<List<Evento>> listarEventosDoEstabelecimentoLogado(Authentication authentication) {
+        String emailLogado = authentication.getName();
+        List<Evento> eventos = eventoService.listarEventosPorEstabelecimento(emailLogado);
+        return ResponseEntity.ok(eventos);
+    }
 }

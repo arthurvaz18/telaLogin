@@ -16,19 +16,23 @@ export class EventoService {
     return this.http.post<Evento>(this.baseUrl, evento);
   }
 
-  listarTodos(): Observable<Evento[]> {
-    return this.http.get<Evento[]>(this.baseUrl);
-  }
-
   editarEvento(evento: Evento): Observable<Evento> {
     return this.http.put<Evento>(this.baseUrl, evento);
+  }
+
+  deletarEvento(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  listarEventosDoEstabelecimentoLogado(): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.baseUrl}/eventos/meus-eventos`);
   }
 
   listarPorTipo(tipo: string): Observable<Evento[]> {
     return this.http.get<Evento[]>(`${this.baseUrl}/tipo/${tipo}`);
   }
 
-  deletarEvento(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  listarTodos(): Observable<Evento[]> {
+    return this.http.get<Evento[]>(this.baseUrl);
   }
 }

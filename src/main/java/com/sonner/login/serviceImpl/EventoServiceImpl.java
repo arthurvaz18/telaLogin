@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Id;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -84,4 +85,12 @@ public class EventoServiceImpl implements EventoService {
     public List<Evento> listarTodosEventos() {
         return eventoRepository.findAll();
     }
+
+    @Override
+    public List<Evento> listarEventosPorEstabelecimento(String emailLogado) {
+        Estabelecimento emailEstabelecimento = estabelecimentoRepository.findByEmail(emailLogado)
+                .orElseThrow(()-> new RuntimeException("Estabelecimento inexistente"));
+        return eventoRepository.findByEstabelecimentoId(emailEstabelecimento.getId());
+    }
+
 }

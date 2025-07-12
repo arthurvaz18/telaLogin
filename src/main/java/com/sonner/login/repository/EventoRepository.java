@@ -9,4 +9,5 @@ import java.util.UUID;
 
 public interface EventoRepository extends JpaRepository<Evento, Integer> {
     List<Evento> findByTipoEventoEnum(TipoEventoEnum tipoEventoEnum);
+    List<Evento> findByEstabelecimentoId(Integer estabelecimentoId);
 }
