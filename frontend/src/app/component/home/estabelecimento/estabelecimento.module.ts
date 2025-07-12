@@ -13,24 +13,26 @@ import {
 } from 'devextreme-angular';
 import {EstabelecimentoRoutingModule} from "./estabelecimento.routing.module";
 import {InfoEstabelecimentoComponent} from "./info-estabelecimento/info-estabelecimento.component";
+import {PerfilModule} from "../perfil/perfil.module";
 
 @NgModule({
   declarations: [
     EstabelecimentoComponent,
     InfoEstabelecimentoComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    EstabelecimentoRoutingModule,
-    DxFormModule,
-    DxButtonModule,
-    DxTextBoxModule,
-    DxSwitchModule,
-    DxDateBoxModule,
-    DxSelectBoxModule,
-    DxCheckBoxModule,
-    DxTextAreaModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        EstabelecimentoRoutingModule,
+        DxFormModule,
+        DxButtonModule,
+        DxTextBoxModule,
+        DxSwitchModule,
+        DxDateBoxModule,
+        DxSelectBoxModule,
+        DxCheckBoxModule,
+        DxTextAreaModule,
+        PerfilModule
+    ]
 })
 export class EstabelecimentoModule {}

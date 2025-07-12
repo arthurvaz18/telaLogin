@@ -18,22 +18,25 @@ import {PerfilRoutingModule} from "./perfil.routing.module";
 
 
 @NgModule({
-  declarations: [
-    PerfilComponent,
-    EditarComponent,
-    VisualizarComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    PerfilRoutingModule,
-    DxFormModule,
-    DxButtonModule,
-    DxTextBoxModule,
-    DxSelectBoxModule,
-    DxCheckBoxModule,
-    DxTextAreaModule,
-    DxDateBoxModule
-  ]
+    declarations: [
+        PerfilComponent,
+        EditarComponent,
+        VisualizarComponent
+    ],
+    exports: [
+        EditarComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        PerfilRoutingModule,
+        DxFormModule,
+        DxButtonModule,
+        DxTextBoxModule,
+        DxSelectBoxModule,
+        DxCheckBoxModule,
+        DxTextAreaModule,
+        DxDateBoxModule
+    ]
 })
 export class PerfilModule { }

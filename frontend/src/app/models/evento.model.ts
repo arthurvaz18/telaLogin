@@ -2,6 +2,7 @@ import {DiaSemanaEnum} from "./enums/dia-semana-enum";
 import {Estabelecimento} from "./estabelecimento.model";
 import {GeneroMusicalEnum} from "./enums/genero-musical.enum";
 import {StatusEventoEnum} from "./enums/status-evento.enum";
+import {TipoEventoEnum} from "./enums/tipo-evento.enum";
 
 export class Evento {
   id: number;
@@ -18,6 +19,7 @@ export class Evento {
   estabelecimento: Estabelecimento
   generoMusicalEnum: GeneroMusicalEnum;
   statusEventoEnum: StatusEventoEnum;
+  tipoEventoEnum: TipoEventoEnum;
 
 
   constructor(init?: Partial<Evento>) {

@@ -21,7 +21,7 @@ public class Evento {
     @Id
     @GeneratedValue
     @Column(name = "id", updatable = false, nullable = false)
-    private UUID id;
+    private Integer id;
 
     @Column(length = 255)
     private String titulo;
@@ -72,11 +72,11 @@ public class Evento {
     public Evento() {
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

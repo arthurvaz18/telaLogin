@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EventoService {
-    Evento criarEvento(Evento evento);
-    Evento buscarEvento(UUID id);
+    Evento criarEvento(Evento evento, String emailLogado);
+    Evento buscarEvento(Integer id);
     Evento editarEvento(Evento evento);
-    void deletarEvento(UUID id);
+    void deletarEvento(Integer id);
     List<Evento> listarEventos(TipoEventoEnum tipoEventoEnum);
     List<Evento> listarTodosEventos();
 }

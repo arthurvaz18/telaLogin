@@ -5,10 +5,10 @@ import com.sonner.login.model.enums.TipoEventoEnum;
 import com.sonner.login.service.EventoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/eventos")
@@ -23,13 +23,14 @@ public class EventoResource {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Evento> criarEvento(@RequestBody Evento evento) {
-        Evento novoEvento = eventoService.criarEvento(evento);
+    public ResponseEntity<Evento> criarEvento(@RequestBody Evento evento, Authentication authentication) {
+        String emailLogado = authentication.getName();
+        Evento novoEvento = eventoService.criarEvento(evento, emailLogado);
         return ResponseEntity.ok(novoEvento);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Evento> buscarEvento(@PathVariable UUID id) {
+    public ResponseEntity<Evento> buscarEvento(@PathVariable Integer id) {
         Evento evento = eventoService.buscarEvento(id);
         return ResponseEntity.ok(evento);
     }
@@ -41,7 +42,7 @@ public class EventoResource {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarEvento(@PathVariable UUID id) {
+    public ResponseEntity<Void> deletarEvento(@PathVariable Integer id) {
         eventoService.deletarEvento(id);
         return ResponseEntity.noContent().build();
     }
