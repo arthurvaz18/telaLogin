@@ -4,13 +4,25 @@ import { CommonModule } from '@angular/common';
 import { EventoRoutingModule } from './evento-routing.module';
 import {EventoComponent} from "./evento.component";
 import {CadastrarEventoComponent} from "./cadastrar/cadastrar-evento.component";
-import {DxButtonModule, DxDateBoxModule, DxFormModule, DxSelectBoxModule, DxTextBoxModule} from "devextreme-angular";
+import {
+  DxButtonModule,
+  DxDataGridModule,
+  DxDateBoxModule,
+  DxFormModule,
+  DxSelectBoxModule, DxTextAreaModule,
+  DxTextBoxModule
+} from "devextreme-angular";
+import {VisualizarEventoComponent} from "./visualizar/visualizar.evento.component";
 
 
 @NgModule({
   declarations: [
     EventoComponent,
-    CadastrarEventoComponent
+    CadastrarEventoComponent,
+    VisualizarEventoComponent
+  ],
+  exports: [
+    VisualizarEventoComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +31,9 @@ import {DxButtonModule, DxDateBoxModule, DxFormModule, DxSelectBoxModule, DxText
     DxTextBoxModule,
     DxDateBoxModule,
     DxSelectBoxModule,
-    DxButtonModule
+    DxButtonModule,
+    DxDataGridModule,
+    DxTextAreaModule
   ]
 })
 export class EventoModule { }

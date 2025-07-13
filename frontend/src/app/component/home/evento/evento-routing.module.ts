@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {EventoComponent} from "./evento.component";
 import {CadastrarEventoComponent} from "./cadastrar/cadastrar-evento.component";
+import {VisualizarEventoComponent} from "./visualizar/visualizar.evento.component";
 
 const routes: Routes = [
   {
@@ -9,7 +10,10 @@ const routes: Routes = [
     component: EventoComponent,
     children: [
       { path: 'cadastrar-evento', component: CadastrarEventoComponent },
+      { path: 'meus-eventos', component: VisualizarEventoComponent},
       { path: '', redirectTo: 'cadastrar-evento', pathMatch: 'full' },
+
+
     ],
   },
 ];

@@ -25,7 +25,7 @@ export class EventoService {
   }
 
   listarEventosDoEstabelecimentoLogado(): Observable<Evento[]> {
-    return this.http.get<Evento[]>(`${this.baseUrl}/eventos/meus-eventos`);
+    return this.http.get<Evento[]>(`${this.baseUrl}/meus-eventos`);
   }
 
   listarPorTipo(tipo: string): Observable<Evento[]> {

@@ -1,0 +1,26 @@
+<div class="calendario-container">
+  <div class="grid-calendario">
+    <div
+      class="calendario-card"
+      *ngFor="let item of eventos"
+      (click)="toggleDetalhes(item)"
+      [class.expanded]="eventoSelecionado === item"
+    >
+      <!-- Cabeçalho do "dia/evento" -->
+      <div class="card-cabecalho">
+        <h4>{{ item.titulo }}</h4>
+        <p>{{ item.dataHoraInicio | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>{{ item.atracao }}</strong></p>
+      </div>
+
+      <!-- Detalhes expandidos -->
+      <div class="card-detalhes" *ngIf="eventoSelecionado === item">
+        <p><strong>Descrição:</strong> {{ item.descricao }}</p>
+        <p><strong>Horário:</strong> {{ item.dataHoraInicio | date: 'HH:mm' }} - {{ item.dataHoraFim | date: 'HH:mm' }}</p>
+        <p><strong>Status:</strong> {{ item.statusEventoEnum }}</p>
+        <p><strong>Tipo:</strong> {{ item.tipoEventoEnum }}</p>
+        <p><strong>Gênero:</strong> {{ item.generoMusicalEnum }}</p>
+      </div>
+    </div>
+  </div>
+</div>

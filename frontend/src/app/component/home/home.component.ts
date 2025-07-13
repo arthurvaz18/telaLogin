@@ -48,6 +48,7 @@ export class HomeComponent {
       expanded: false,
       subItens: [
         { texto: 'Cadastrar', caminho: '/home/evento/cadastrar-evento' },
+        { texto: 'Listar Eventos', caminho: '/home/evento/meus-eventos' },
       ]
     },
     { texto: 'Cardápio', caminho: '/home/cardapio', icon: 'doc' },

@@ -55,7 +55,7 @@ public class Evento {
 
     private Integer lotacaoPessoa;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estabelecimento_id")
     @JsonBackReference
     private Estabelecimento estabelecimento;

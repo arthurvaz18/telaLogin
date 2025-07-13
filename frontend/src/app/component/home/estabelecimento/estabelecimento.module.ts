@@ -14,25 +14,27 @@ import {
 import {EstabelecimentoRoutingModule} from "./estabelecimento.routing.module";
 import {InfoEstabelecimentoComponent} from "./info-estabelecimento/info-estabelecimento.component";
 import {PerfilModule} from "../perfil/perfil.module";
+import {EventoModule} from "../evento/evento.module";
 
 @NgModule({
   declarations: [
     EstabelecimentoComponent,
     InfoEstabelecimentoComponent,
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        EstabelecimentoRoutingModule,
-        DxFormModule,
-        DxButtonModule,
-        DxTextBoxModule,
-        DxSwitchModule,
-        DxDateBoxModule,
-        DxSelectBoxModule,
-        DxCheckBoxModule,
-        DxTextAreaModule,
-        PerfilModule
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    EstabelecimentoRoutingModule,
+    DxFormModule,
+    DxButtonModule,
+    DxTextBoxModule,
+    DxSwitchModule,
+    DxDateBoxModule,
+    DxSelectBoxModule,
+    DxCheckBoxModule,
+    DxTextAreaModule,
+    PerfilModule,
+    EventoModule
+  ]
 })
 export class EstabelecimentoModule {}
