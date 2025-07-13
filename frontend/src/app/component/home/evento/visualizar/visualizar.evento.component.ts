@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Evento} from "../../../../models/evento.model";
 import {EventoService} from "../../../../services/evento.service";
-import {AuthService} from "../../../../services/auth/auth.service";
-import {DiaSemanaEnum} from "../../../../models/enums/dia-semana-enum";
-import {GeneroMusicalEnum} from "../../../../models/enums/genero-musical.enum";
-import {StatusEventoEnum} from "../../../../models/enums/status-evento.enum";
-import {TipoEventoEnum} from "../../../../models/enums/tipo-evento.enum";
+import {Estabelecimento} from "../../../../models/estabelecimento.model";
 
 @Component({
   selector: 'app-visualizar-evento',
@@ -15,16 +11,10 @@ import {TipoEventoEnum} from "../../../../models/enums/tipo-evento.enum";
 export class VisualizarEventoComponent implements OnInit {
   evento: Evento = new Evento();
   eventos: Evento[] = [];
-  diaSemanaItens = Object.values(DiaSemanaEnum);
-  generoMusicalItens = Object.values(GeneroMusicalEnum);
-  statusEventoItens = Object.values(StatusEventoEnum);
-  tipoEventoItens = Object.values(TipoEventoEnum);
-
-  modoEdicao = false;
   eventoSelecionado: Evento | null = null;
+  estabelecimento: Estabelecimento = new Estabelecimento();
 
-  constructor(private mainService: EventoService,
-              private authService: AuthService) {
+  constructor(private mainService: EventoService) {
   }
 
   ngOnInit(): void {
@@ -38,27 +28,13 @@ export class VisualizarEventoComponent implements OnInit {
         if (eventoList.length > 0) {
           this.evento = eventoList[0]; // Exibe o primeiro evento como exemplo
         }
+        console.log('Eventos recebidos:', eventoList);
       },
       error: (err) => {
         console.error('Erro ao buscar eventos:', err);
         alert('Erro ao carregar eventos do seu estabelecimento.');
       }
     })
-  }
-  ativarEdicao(): void {
-    this.modoEdicao = true;
-  }
-
-  cancelarEdicao() {
-    this.modoEdicao = false;
-  }
-
-  atualizarDataHoraInicio(event: any): void {
-    this.evento.dataHoraInicio = new Date(event.value);
-  }
-
-  atualizarDataHoraFim(event: any): void {
-    this.evento.dataHoraFim = new Date(event.value);
   }
 
   toggleDetalhes(evento: Evento) {

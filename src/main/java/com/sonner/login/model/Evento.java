@@ -1,6 +1,7 @@
 package com.sonner.login.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sonner.login.model.enums.DiaSemanaEnum;
 import com.sonner.login.model.enums.GeneroMusicalEnum;
 import com.sonner.login.model.enums.StatusEventoEnum;
@@ -57,7 +58,7 @@ public class Evento {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estabelecimento_id")
-    @JsonBackReference
+    @JsonIgnoreProperties({"eventos"})
     private Estabelecimento estabelecimento;
 
     @Enumerated(EnumType.STRING)
