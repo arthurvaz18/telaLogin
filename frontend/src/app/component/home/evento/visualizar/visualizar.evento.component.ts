@@ -45,4 +45,21 @@ export class VisualizarEventoComponent implements OnInit {
     }
   }
 
+  deletarEvento(id: string): void {
+    if (confirm('tem certeza que deseja deletar este evento?')) {
+      this.mainService.deletarEvento(id).subscribe({
+        next: () => {
+          this.eventos = this.eventos.filter(evento => evento.id !== id);
+          alert("Evento deletado com sucesso!");
+        },
+        error: (err) => {
+          console.error('Erro ao excluir evento:', err);
+          alert('Erro ao excluir o evento.');
+        }
+      })
+    }
+  }
+
+  editarEvento() {
+  }
 }

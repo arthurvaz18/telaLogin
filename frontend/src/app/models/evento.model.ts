@@ -5,7 +5,7 @@ import {StatusEventoEnum} from "./enums/status-evento.enum";
 import {TipoEventoEnum} from "./enums/tipo-evento.enum";
 
 export class Evento {
-  id: number;
+  id: string;
   titulo: string;
   descricao: string;
   atracao: string;

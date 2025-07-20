@@ -58,7 +58,7 @@ public class Evento {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estabelecimento_id")
-    @JsonIgnoreProperties({"eventos"})
+    @JsonIgnoreProperties("eventos")  // Evita loop sem impedir acesso ao nome do estabelecimento
     private Estabelecimento estabelecimento;
 
     @Enumerated(EnumType.STRING)

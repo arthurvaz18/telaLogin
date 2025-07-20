@@ -89,7 +89,6 @@ public class Estabelecimento {
     private LocalTime horaFechamento;
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonManagedReference
     private List<Evento> eventos;
 
 

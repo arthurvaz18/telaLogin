@@ -16,11 +16,18 @@
       <!-- Detalhes expandidos -->
       <div class="card-detalhes" *ngIf="eventoSelecionado === item">
         <p><strong>Descrição:</strong> {{ item.descricao }}</p>
-        <p><strong>Horário:</strong> {{ item.dataHoraInicio | date: 'HH:mm' }} - {{ item.dataHoraFim | date: 'HH:mm' }}</p>
+        <p><strong>Horário:</strong> {{ item.dataHoraInicio | date: 'HH:mm' }} - {{ item.dataHoraFim | date: 'HH:mm' }}
+        </p>
         <p><strong>Status:</strong> {{ item.statusEventoEnum }}</p>
         <p><strong>Tipo:</strong> {{ item.tipoEventoEnum }}</p>
         <p><strong>Gênero:</strong> {{ item.generoMusicalEnum }}</p>
         <p><strong>Local:</strong> {{ item.estabelecimento.nome }}</p>
+
+        <div class="botoes-acao">
+          <dx-button text="Deletar" type="danger" icon="trash" (onClick)="deletarEvento(item.id)"></dx-button>
+          <dx-button text="Atualizar" type="default" icon="edit" (onClick)="editarEvento()"></dx-button>
+        </div>
+
       </div>
     </div>
   </div>
