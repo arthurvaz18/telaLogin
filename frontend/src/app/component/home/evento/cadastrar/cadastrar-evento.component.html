@@ -1,22 +1,20 @@
-<div
-  *ngIf="!modoEdicao"
-  class="card-estabelecimento"
-  (click)="ativarEdicao()"
->
-  <h3 class="card-titulo">Cadastrar Evento</h3>
-  <p class="card-dica"><em>Clique aqui para editar</em></p>
+<div class="calendario-container">
+  <div class="grid-calendario">
+    <div
+      class="calendario-card"
+      *ngIf="!modoEdicao"
+      (click)="ativarEdicao()"
+    >
+      <div class="card-cabecalho">
+        <h4>Cadastrar Evento</h4>
+      </div>
+      <p class="card-dica"><em>Cadastrar evento</em></p>
+    </div>
+  </div>
 </div>
 
 
 <div *ngIf="modoEdicao" class="form-container">
-  <dx-button
-    icon="arrowleft"
-    hint="Voltar"
-    stylingMode="text"
-    (onClick)="cancelarEdicao()"
-    class="botao-voltar"
-  ></dx-button>
-
   <div style="max-height: 1000px; overflow-y: auto; padding-right: 10px;">
     <dx-form
       [formData]="evento"
@@ -133,8 +131,10 @@
       </div>
 
     </dx-form>
-    <div style="text-align: center; margin-top: 20px;">
-      <dx-button text="Cadastrar" type="default" (onClick)="cadastrarEvento()"></dx-button>
+    <div class="botoes-acao">
+      <dx-button type="danger" text="Cancelar" (onClick)="cancelarEdicao()"></dx-button>
+      <dx-button text="Cadastrar" type="success" (onClick)="cadastrarEvento()"></dx-button>
+
     </div>
 
   </div>
