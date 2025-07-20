@@ -5,12 +5,12 @@ import { EventoRoutingModule } from './evento-routing.module';
 import {EventoComponent} from "./evento.component";
 import {CadastrarEventoComponent} from "./cadastrar/cadastrar-evento.component";
 import {
-  DxButtonModule,
-  DxDataGridModule,
-  DxDateBoxModule,
-  DxFormModule,
-  DxSelectBoxModule, DxTextAreaModule,
-  DxTextBoxModule
+    DxButtonModule,
+    DxDataGridModule,
+    DxDateBoxModule,
+    DxFormModule, DxLoadIndicatorModule,
+    DxSelectBoxModule, DxTextAreaModule,
+    DxTextBoxModule
 } from "devextreme-angular";
 import {VisualizarEventoComponent} from "./visualizar/visualizar.evento.component";
 
@@ -24,16 +24,17 @@ import {VisualizarEventoComponent} from "./visualizar/visualizar.evento.componen
   exports: [
     VisualizarEventoComponent
   ],
-  imports: [
-    CommonModule,
-    EventoRoutingModule,
-    DxFormModule,
-    DxTextBoxModule,
-    DxDateBoxModule,
-    DxSelectBoxModule,
-    DxButtonModule,
-    DxDataGridModule,
-    DxTextAreaModule
-  ]
+    imports: [
+        CommonModule,
+        EventoRoutingModule,
+        DxFormModule,
+        DxTextBoxModule,
+        DxDateBoxModule,
+        DxSelectBoxModule,
+        DxButtonModule,
+        DxDataGridModule,
+        DxTextAreaModule,
+        DxLoadIndicatorModule
+    ]
 })
 export class EventoModule { }

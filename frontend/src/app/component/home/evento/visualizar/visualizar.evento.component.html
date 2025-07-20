@@ -25,10 +25,140 @@
 
         <div class="botoes-acao">
           <dx-button text="Deletar" type="danger" icon="trash" (onClick)="deletarEvento(item.id)"></dx-button>
-          <dx-button text="Atualizar" type="default" icon="edit" (onClick)="editarEvento()"></dx-button>
+          <dx-button text="Atualizar" type="default" icon="edit" (onClick)="abrirEditarEvento(item.id)"></dx-button>
         </div>
 
       </div>
     </div>
+  </div>
+</div>
+
+          <!--%%%%%%%%%%%%%%%%%%%%%%% Edita campos do Evento %%%%%%%%%%%%%%%%%%%%%%%-->
+
+<div *ngIf="mostrarAtualizarCampos" class="resultadoClientes" style="margin-top: 20px;">
+  <div style="max-height: 1000px; overflow-y: auto; padding-right: 10px;">
+    <dx-form
+      [formData]="evento"
+      [minColWidth]="200"
+      [labelLocation]="'top'"
+      [alignItemLabels]="true"
+      [showColonAfterLabel]="false">
+
+      <dxi-item itemType="group" [colCount]="3">
+        <dxi-item dataField="titulo" template="tituloTemplate"></dxi-item>
+        <dxi-item dataField="atracao" template="atracaoTemplate"></dxi-item>
+        <dxi-item dataField="descricao" template="descricaotemplate"></dxi-item>
+      </dxi-item>
+
+      <dxi-item itemType="group" [colCount]="3">
+        <dxi-item dataField="diaSemanaInicio" template="diaSemanaInicioTemplate"></dxi-item>
+        <dxi-item dataField="generoMusicalEnum" template="generoMusicalEnumTemplate"></dxi-item>
+        <dxi-item dataField="statusEventoEnum" template="statusEventoEnumTemplate" [colSpan]="2"></dxi-item>
+      </dxi-item>
+
+      <dxi-item itemType="group" [colCount]="3">
+        <dxi-item dataField="tipoEventoEnum" [label]="{text: 'Tipo do Evento'}"
+                  template="tipoEventoEnumTemplate"></dxi-item>
+        <dxi-item dataField="dataHoraInicio" template="dataHoraInicioTemplate"
+                  [horizontalAlignment]="'center'"></dxi-item>
+        <dxi-item dataField="dataHoraFim" template="dataHoraFimTemplate"
+                  [horizontalAlignment]="'center'"></dxi-item>
+      </dxi-item>
+      <!-- Templates compactos e modernos -->
+
+      <div *dxTemplate="let data of 'tituloTemplate'">
+        <dx-text-box
+          [(value)]="evento.titulo"
+          stylingMode="filled"
+          labelMode="floating"
+          [showClearButton]="true">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'atracaoTemplate'">
+        <dx-text-box
+          [(value)]="evento.atracao"
+          stylingMode="filled"
+          labelMode="floating"
+          [showClearButton]="true">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'descricaotemplate'">
+        <dx-text-box
+          [(value)]="evento.descricao"
+          stylingMode="filled"
+          labelMode="floating"
+          [showClearButton]="true">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'tipoEventoEnumTemplate'">
+        <dx-select-box
+          [items]="tipoEventoItens"
+          [(value)]="evento.tipoEventoEnum"
+          stylingMode="filled"
+          labelMode="floating">
+        </dx-select-box>
+      </div>
+
+      <div *dxTemplate="let data of 'dataHoraInicioTemplate'">
+        <dx-date-box
+          [value]="evento.dataHoraInicio"
+          (onValueChanged)="atualizarDataHoraInicio($event)"
+          [type]="'datetime'"
+          stylingMode="filled"
+          labelMode="floating"
+          displayFormat="dd/MM/yyyy HH:mm"
+          width="250px">
+        </dx-date-box>
+      </div>
+
+      <div *dxTemplate="let data of 'dataHoraFimTemplate'">
+        <dx-date-box
+          [value]="evento.dataHoraFim"
+          (onValueChanged)="atualizarDataHoraFim($event)"
+          type="datetime"
+          stylingMode="filled"
+          labelMode="floating"
+          displayFormat="dd/MM/yyyy HH:mm"
+          width="250px">
+        </dx-date-box>
+      </div>
+
+      <div *dxTemplate="let data of 'diaSemanaInicioTemplate'">
+        <dx-select-box
+          [items]="diaSemanaItens"
+          [(value)]="evento.diaSemanaInicio"
+          stylingMode="filled"
+          labelMode="floating">
+        </dx-select-box>
+      </div>
+
+      <div *dxTemplate="let data of 'generoMusicalEnumTemplate'">
+        <dx-select-box
+          [items]="generoMusicalItens"
+          [(value)]="evento.generoMusicalEnum"
+          stylingMode="filled"
+          labelMode="floating">
+        </dx-select-box>
+      </div>
+
+      <div *dxTemplate="let data of 'statusEventoEnumTemplate'">
+        <dx-select-box
+          [items]="statusEventoItens"
+          [(value)]="evento.statusEventoEnum"
+          stylingMode="filled"
+          labelMode="floating">
+        </dx-select-box>
+      </div>
+    </dx-form>
+
+    <div class="botoes-acao">
+      <dx-button type="danger" text="Cancelar Edição" (onClick)="cancelarEdicao()"></dx-button>
+      <dx-button type="success" text="Salvar campos" (onClick)="AtualizarEvento(evento)"></dx-button>
+    </div>
+
+
   </div>
 </div>
