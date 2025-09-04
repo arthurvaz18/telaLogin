@@ -1,6 +1,5 @@
 package com.sonner.login.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sonner.login.model.enums.DiaSemanaEnum;
 import com.sonner.login.model.enums.TipoEstabelecimentoEnum;
